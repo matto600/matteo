@@ -44,6 +44,7 @@ a{color:inherit;text-decoration:none}
 ul{list-style:none}
 
 .container{max-width:var(--maxw);margin-inline:auto;padding-inline:var(--pad);width:100%}
+.section > .container{padding-inline:10.7rem}
 
 /* ---------- Header (global, single style, sticky) ---------- */
 .site-header{position:sticky;top:0;z-index:30;background:var(--yellow)}
@@ -67,16 +68,16 @@ ul{list-style:none}
 .hero__art img{width:100%;display:block}
 .hero-banner img{width:100%;display:block}
 .full-photo img{width:100%;display:block;object-fit:cover}
-.hero-photo img{max-height:46rem;width:100%;object-fit:cover}   /* ~736px @1920 */
+.hero-photo img{max-height:56rem;width:100%;object-fit:cover}
 
 /* ---------- Generic section ---------- */
-.section{padding-block:6.875rem;position:relative}
-.eyebrow-hand img{width:22.5rem;margin-bottom:.6rem}
+.section{padding-block:7.5rem;position:relative}
+.eyebrow-hand img{width:30rem;margin-bottom:1rem}
 
-.heading{font-family:var(--f-head);font-weight:700;text-transform:uppercase;font-size:5.375rem;line-height:.95;letter-spacing:.005em}
-.subhead{font-family:var(--f-head);font-weight:700;font-style:italic;font-size:2.5rem;line-height:1.05;margin-top:.15em}
-.lead{font-size:1.375rem;max-width:40ch;margin-top:1.1em;font-weight:400}
-.list-plain{margin-top:1.2em;font-size:1.4375rem}
+.heading{font-family:var(--f-head);font-weight:700;text-transform:uppercase;font-size:8rem;line-height:.92;letter-spacing:.005em}
+.subhead{font-family:var(--f-head);font-weight:700;font-style:italic;font-size:3.4rem;line-height:1.05;margin-top:.2em}
+.lead{font-size:1.85rem;line-height:1.5;max-width:38ch;margin-top:1.1em;font-weight:400}
+.list-plain{margin-top:1.2em;font-size:1.95rem}
 .list-plain li{margin-bottom:.35em;font-weight:500}
 
 .split{display:grid;grid-template-columns:1.1fr .9fr;gap:4.375rem;align-items:center}
@@ -94,13 +95,14 @@ ul{list-style:none}
 .artband img{width:100%}
 
 /* ---------- Insieme (links) ---------- */
-.linklist{margin-top:1.3em;font-size:1.625rem}
+.linklist{margin-top:1.3em;font-size:2.1rem}
 .linklist li{display:flex;align-items:center;gap:.5em;margin-bottom:.45em}
 .linklist a{font-weight:700;text-decoration:underline;text-underline-offset:3px}
 .linklist a:hover{color:#9c9a13}
 .bullet{width:.7em;height:.7em;border:.18rem solid var(--ink);border-radius:50%;flex:0 0 auto}
 .insieme__media{display:flex;flex-direction:column;align-items:flex-start;gap:.5rem}
-.note-esplosione{width:18.75rem;margin-left:1rem}
+.note-esplosione{width:26rem;margin-left:1rem;order:2}
+.insieme__media img{order:1}
 
 /* ---------- claim ---------- */
 .claim{padding-block:4.375rem}
@@ -110,27 +112,27 @@ ul{list-style:none}
 .claim--center .claim__img{margin-inline:auto;width:68rem;max-width:100%}
 
 /* ---------- Art Brut page extras ---------- */
-.outsider__row{display:flex;align-items:flex-start;gap:1.5rem}
+.outsider__row{display:flex;align-items:flex-start;gap:3rem}
 .vert-milano{width:4.375rem;flex:0 0 auto;margin-top:2rem}
 .outsider__row .split{flex:1}
-.note-falsificato{width:35rem;margin-top:1.5rem}
-.note-infotac{width:20rem;margin-bottom:.6rem}
+.note-falsificato{width:40rem;margin-top:2.5rem}
+.note-infotac{width:20rem;margin-bottom:1.2rem}
 .cta-line{display:flex;align-items:center;gap:1.1rem;margin-top:1.3em;flex-wrap:wrap}
-.link-u{font-family:var(--f-head);font-weight:700;font-size:1.875rem;text-decoration:underline;text-underline-offset:4px}
+.link-u{font-family:var(--f-head);font-weight:700;font-size:2.1rem;text-decoration:underline;text-underline-offset:4px}
 .link-u:hover{color:#9c9a13}
 .cta-line .arrow{width:7.5rem}
 
 /* ---------- Lavori showcase ---------- */
-.showcase__grid{display:grid;grid-template-columns:1fr 1fr;gap:3.125rem}
-.showcase__label{font-family:var(--f-display);color:var(--yellow);font-size:4.5rem;line-height:1;margin-bottom:.2em;-webkit-text-stroke:1px #d6d200}
-.product img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.showcase__grid{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;margin-top:2rem}
+.showcase__label{font-family:var(--f-display);color:var(--yellow);font-size:5.5rem;line-height:1;margin-bottom:.25em;-webkit-text-stroke:1px #d6d200}
+.product img{width:100%;aspect-ratio:1/1;object-fit:cover}
 
 /* ---------- Aziende lists ---------- */
 .note-maseimatto{width:18.75rem;margin:.4rem 0 1.1rem}
-.services-list{font-family:var(--f-display);color:var(--yellow);font-size:3.75rem;line-height:1.05;-webkit-text-stroke:1px #d6d200}
+.services-list{font-family:var(--f-display);color:var(--yellow);font-size:3.4rem;line-height:1.05;-webkit-text-stroke:1px #d6d200}
 .services-list li{text-transform:uppercase}
 .perche .subhead{margin-bottom:.6em}
-.yellow-list{color:var(--yellow);font-weight:700;font-size:1.5rem;line-height:1.55;margin-top:.4em;-webkit-text-stroke:.4px #cfcb10}
+.yellow-list{color:var(--yellow);font-weight:700;font-size:1.7rem;line-height:1.55;margin-top:.4em;-webkit-text-stroke:.4px #cfcb10}
 
 /* ---------- Footer ---------- */
 .site-footer{background:var(--yellow);position:relative;padding-block:2.9rem 3.4rem;margin-top:0}
@@ -142,9 +144,9 @@ ul{list-style:none}
 .footer-grid{display:grid;grid-template-columns:auto 1fr auto;gap:3.75rem;align-items:start}
 .footer-ig img{width:2.875rem}
 .footer-center{align-self:center}
-.footer-email{font-family:var(--f-display);color:var(--white);font-size:4.75rem;line-height:.95}
-.footer-dona{font-family:var(--f-display);color:var(--ink);font-size:3.125rem;line-height:1;margin-top:.05em}
-.footer-info{font-size:.9375rem;line-height:1.7;margin-top:.4rem}
+.footer-email{font-family:var(--f-display);color:var(--white);font-size:6rem;line-height:.95}
+.footer-dona{font-family:var(--f-display);color:var(--ink);font-size:4rem;line-height:1;margin-top:.05em}
+.footer-info{font-size:1.15rem;line-height:1.7;margin-top:.6rem}
 .footer-info .row{display:flex;align-items:center;gap:.5rem}
 .footer-info .row img{width:1rem}
 .footer-logo img{width:11.25rem}
@@ -157,7 +159,8 @@ ul{list-style:none}
     opacity:0;transform:translateY(2rem);
     transition:opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1);
   }
-  .js .is-visible{opacity:1;transform:none}
+  .js .is-visible,
+  .js .full-photo.is-visible:not(.hero-photo){opacity:1;transform:none}
 }
 
 /* ============================================================
@@ -184,3 +187,6 @@ ul{list-style:none}
   .hero-photo img{max-height:none}
   .vert-milano{display:none}
 }
+
+.falsificato-wrap{padding-inline:10.7rem;margin-top:1rem}
+.falsificato-wrap .note-falsificato{width:46rem;margin:0}
