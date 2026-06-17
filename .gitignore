@@ -1,0 +1,7 @@
+# tooling / scratch (not part of the deliverable)
+node_modules/
+package.json
+package-lock.json
+shot.js
+work/
+assets_src/
