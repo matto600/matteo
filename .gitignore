@@ -5,3 +5,6 @@ package-lock.json
 shot.js
 work/
 assets_src/
+
+# build artifact (delivered to user, not versioned)
+brut-site.zip
