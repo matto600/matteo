@@ -5,36 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BRUT — Outsider Lab · La normalità è sopravvalutata</title>
 <meta name="description" content="BRUT è un atelier aperto dove la neuroatipicità diventa arte. Una casa degli artisti dove persone neurodivergenti e fragili trasformano i propri limiti in forza creativa.">
-<link rel="preconnect" href="">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="stylesheet" href="css/style.css">
+<script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
 
-<!-- ================= HEADER ================= -->
-<header class="site-header">
-  <div class="container">
-    <a class="logo" href="index.html" aria-label="BRUT home">
-      <img src="assets/img/Header__sito-26.png" alt="BRUT">
-    </a>
-    <nav class="main-nav" aria-label="Principale">
-      <a href="art-brut.html">ABOUT</a>
-      <a href="lavori.html">PROGETTI</a>
-      <a href="https://instagram.com" target="_blank" rel="noopener">INSTAGRAM</a>
-      <a class="btn-pill" href="#footer">CONTATTACI</a>
-    </nav>
-    <button class="menu-toggle" id="menuToggle" aria-label="Apri menu" aria-expanded="false">
-      <img src="assets/img/Header__Simbolo_menu-31.png" alt="">
-    </button>
-  </div>
-  <!-- mobile menu -->
-  <nav class="mobile-nav" id="mobileNav" aria-label="Menu mobile" hidden>
-    <a href="art-brut.html">ABOUT</a>
-    <a href="lavori.html">PROGETTI</a>
-    <a href="aziende.html">CON LE AZIENDE</a>
-    <a href="https://instagram.com" target="_blank" rel="noopener">INSTAGRAM</a>
-    <a href="#footer">CONTATTACI</a>
-  </nav>
-</header>
+<div data-include="header"></div>
 
 <!-- ================= HERO ================= -->
 <section class="hero hero--home">
@@ -86,10 +66,10 @@
       <h2 class="heading">Insieme a BRUT</h2>
       <p class="subhead">( L'arte non conosce etichette )</p>
       <ul class="linklist">
-        <li><span class="bullet"></span><a href="art-brut.html">Mostre ed eventi</a></li>
-        <li><span class="bullet"></span><a href="art-brut.html">Workshop creativi</a></li>
-        <li><span class="bullet"></span><a href="lavori.html">Prodotti Brut</a></li>
-        <li><span class="bullet"></span><a href="aziende.html">Brut con le aziende</a></li>
+        <li><span class="bullet"></span><a href="art-brut">Mostre ed eventi</a></li>
+        <li><span class="bullet"></span><a href="art-brut">Workshop creativi</a></li>
+        <li><span class="bullet"></span><a href="lavori">Prodotti Brut</a></li>
+        <li><span class="bullet"></span><a href="aziende">Brut con le aziende</a></li>
       </ul>
     </div>
     <div class="media-ink insieme__media">
@@ -107,29 +87,7 @@
   </div>
 </section>
 
-<!-- ================= FOOTER ================= -->
-<footer class="site-footer" id="footer">
-  <div class="container">
-    <div class="footer-grid">
-      <a class="footer-ig" href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram">
-        <img src="assets/img/Footer__sito-16.png" alt="">
-      </a>
-      <div class="footer-center">
-        <a class="footer-email" href="mailto:lab@brut.milano.it">lab@brut.milano.it</a>
-        <div class="footer-dona">DONA IL 5X1000</div>
-        <div class="footer-info">
-          <div>Brut Outsider Lab</div>
-          <div>C.F. 97965590157</div>
-          <div class="row"><img src="assets/img/Footer__sito-17.png" alt="">Magnete, Via Adriano 107, Milano</div>
-          <div class="row"><img src="assets/img/Footer__sito-18.png" alt="">+39 347 957 6243</div>
-        </div>
-      </div>
-      <a class="footer-logo" href="index.html" aria-label="BRUT">
-        <img src="assets/img/PaginaArtbrut__sito-28.png" alt="BRUT">
-      </a>
-    </div>
-  </div>
-</footer>
+<div data-include="footer"></div>
 
 <script src="js/main.js"></script>
 </body>
