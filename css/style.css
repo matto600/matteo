@@ -116,7 +116,10 @@ ul{list-style:none}
 /* ---------- Art Brut page extras ---------- */
 .outsider__row{display:flex;align-items:flex-start;gap:3rem}
 .vert-milano{width:4.375rem;flex:0 0 auto;margin-top:2rem}
-.outsider__row .split{flex:1}
+.outsider__row .split{flex:1;grid-template-columns:1fr 1fr;align-items:center}
+/* the face illustration is large and bleeds to the page edge (like the mockup) */
+.outsider .media-ink{margin-right:-10.7rem}
+.outsider .media-ink img{width:100%}
 .note-falsificato{width:40rem;margin-top:2.5rem}
 .note-infotac{width:20rem;margin-bottom:1.2rem}
 .cta-line{display:flex;align-items:center;gap:1.1rem;margin-top:1.3em;flex-wrap:wrap}
@@ -182,6 +185,8 @@ ul{list-style:none}
   .chisiamo__grid{justify-items:start}
   .claim .media-ink{display:none}
   .outsider__row{flex-direction:column;gap:1.2rem}
+  .outsider__row .split{grid-template-columns:1fr}
+  .outsider .media-ink{margin-right:0}
   .media-ink{order:-1}
   .media-ink img{max-width:520px}
   .note-totalmente{justify-self:start;width:min(60%,300px)}
