@@ -1,40 +1,29 @@
-# Deploy automatico via Git di cPanel
+# Deploy via Git di cPanel (FTP non necessario)
 
-L'FTP è bloccato dall'ambiente, ma cPanel può **clonare il repo GitHub e
-deployare da solo**. Una volta configurato, ogni `git push` che faccio io
-finisce online senza altri passaggi.
+Il sito sta nella **root del repository** (index.html, css/, js/, assets/…).
+Quindi se cPanel clona il repo direttamente in `public_html`, il sito è
+raggiungibile dalla **root del dominio** (niente più `/site`).
 
-## Come si comporta
-- Il sito vive in `site/`. Il file `.cpanel.yml` (in root) dice a cPanel di
-  copiare `site/.` dentro `public_html/`.
-- Ad ogni deploy, cPanel esegue quei task → la web-root viene aggiornata.
-
-## Setup (una volta sola, lato cPanel)
+## Opzione A — repo clonato dentro public_html (più semplice)
 1. cPanel → **Git™ Version Control** → **Create**.
-2. **Clone URL**: l'URL del repo GitHub
-   `https://github.com/matto600/matteo.git`
-   - Repo privato → serve un **Personal Access Token** GitHub nell'URL:
-     `https://<TOKEN>@github.com/matto600/matteo.git`
-     (oppure carica una deploy key SSH in GitHub e usa l'URL `git@github.com:...`).
-3. **Repository Path**: es. `/home/<utente>/repos/brut`.
-4. Salva. In **Manage** scegli il **branch** da deployare:
-   `claude/wizardly-maxwell-5e48ao` (oppure `main` se mergi la PR #1).
-5. Premi **Update from Remote** e poi **Deploy HEAD Commit**: il sito va in
-   `public_html`. Verifica che `index.html` sia nella root del dominio.
+2. **Clone URL**: `https://github.com/matto600/matteo.git`
+   (repo privato → usa un token: `https://<TOKEN>@github.com/matto600/matteo.git`).
+3. **Repository Path**: `public_html` (o la cartella del dominio).
+4. Branch: `claude/wizardly-maxwell-5e48ao` (o `main` se mergi la PR).
+5. **Update from Remote**. Il sito è già servito dalla root.
+   (I file di sviluppo — `.claude`, `tools`, `*.md`, `.git` — sono bloccati
+   via `.htaccess`, non vengono serviti.)
 
-## Deploy automatico ad ogni push (consigliato)
-cPanel da solo non fa auto-pull. Per renderlo automatico:
-- **GitHub Webhook**: repo GitHub → Settings → Webhooks → Add → payload URL =
-  l'endpoint di deploy del tuo cPanel (i provider con cPanel di solito offrono
-  un URL "Deploy on push"; chiedi all'hosting se espongono l'endpoint o usa un
-  plugin/cron).
-- In alternativa, un **cron job** sul server ogni X minuti:
-  `cd /home/<utente>/repos/brut && git pull && /usr/local/cpanel/bin/cpanel-git-deploy`
-  (oppure `git pull` + i task del `.cpanel.yml` via `cpanel` API).
+## Opzione B — repo FUORI da public_html (più pulito)
+1. Repository Path es. `/home/<utente>/repos/brut`.
+2. Il file **`.cpanel.yml`** copia automaticamente i file del sito in
+   `public_html` quando premi **Deploy HEAD Commit**.
 
-Se l'hosting non permette webhook/cron, resta il **Deploy** manuale (1 click in
-cPanel dopo ogni mio push): comunque molto più comodo dell'FTP.
+## Auto-deploy ad ogni push
+cPanel non fa auto-pull da solo. Per automatizzarlo:
+- **GitHub Webhook** verso l'endpoint di deploy del tuo cPanel, oppure
+- un **cron** sul server: `cd <repo> && git pull` (+ deploy in Opzione B).
+Altrimenti basta **Update/Deploy** (1 click) dopo ogni mio push.
 
-## Nota branch
-La PR #1 punta a `claude/trusting-brown-7ZWAm`. Se preferisci deployare da
-`main`, dimmelo e preparo un branch `main` pulito con dentro il sito.
+## Anteprima locale
+`python3 -m http.server 8099` dalla root del repo → http://localhost:8099

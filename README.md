@@ -46,11 +46,10 @@ disattivate automaticamente con `prefers-reduced-motion`.
 ## Sviluppo / anteprima locale
 Basta un server statico qualsiasi:
 ```bash
-cd site
 python3 -m http.server 8099
 # apri http://localhost:8099
 ```
 
 ## Pubblicazione
-Trascina la cartella `site/` su **Netlify** / **Vercel**, oppure pubblicala con
-**GitHub Pages** (imposta come root la cartella `site/`). Non serve build.
+Pubblica i file del sito (root del repo) su **Netlify** / **Vercel**, oppure pubblicala con
+**GitHub Pages** (serve la root del repo). Non serve build.

@@ -29,3 +29,10 @@ Options -Indexes +FollowSymLinks
 </IfModule>
 
 ErrorDocument 404 /index.html
+
+# ── Block dev / meta files (when repo root is the web root) ──
+RedirectMatch 404 ^/\.git
+RedirectMatch 404 ^/(\.claude|tools|assets_src|node_modules)(/|$)
+<FilesMatch "(^\.|\.(yml|md|gitignore|json|lock)$)">
+  Require all denied
+</FilesMatch>

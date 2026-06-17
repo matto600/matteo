@@ -9,8 +9,8 @@ pagina del sito (renderizzata a larghezza **1920px**) con il mockup di design
 corrispondente e riportare con precisione TUTTE le discrepanze, ordinate per gravità.
 
 ## Contesto del progetto
-- Sito statico in `site/` servito da `http://localhost:8099` (se non risponde,
-  avvialo: `cd site && python3 -m http.server 8099 &`).
+- Sito statico (root del repo) servito da `http://localhost:8099` (se non risponde,
+  avvialo: `python3 -m http.server 8099 &` dalla root).
 - Mockup di design in `assets_src/SITO/`:
   - Home → `HOME.png`
   - Art Brut → `sito_Tavola disegno 1 copia.png`

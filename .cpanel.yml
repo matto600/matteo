@@ -1,8 +1,9 @@
 ---
 deployment:
   tasks:
-    # Copia il contenuto di site/ nella web-root del dominio.
-    # $HOME = home dell'utente cPanel. Se il sito sta in un sottodominio/addon,
-    # cambia il percorso (es. $HOME/brut.milano.it/ ).
+    # Copia SOLO i file del sito nella web-root del dominio.
+    # Utile se il repository è stato clonato FUORI da public_html.
+    # Se invece il repo è clonato dentro public_html, il sito è già servito
+    # dalla root e questo step è ridondante (innocuo).
     - export DEPLOYPATH=$HOME/public_html/
-    - /bin/cp -R site/. "$DEPLOYPATH"
+    - /bin/cp -R index.html art-brut.html lavori.html aziende.html css js assets favicon.ico favicon-16.png favicon-32.png favicon-512.png apple-touch-icon.png .htaccess "$DEPLOYPATH"
