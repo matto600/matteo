@@ -8,3 +8,4 @@ assets_src/
 
 # build artifact (delivered to user, not versioned)
 brut-site.zip
+shot_fold.js

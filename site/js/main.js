@@ -113,10 +113,53 @@
     targets.forEach(function (el) { io.observe(el); });
   }
 
+  // inertia smooth scroll (wheel), keeps native sticky header working
+  function initSmoothScroll() {
+    var mq = window.matchMedia;
+    if (mq('(prefers-reduced-motion: reduce)').matches) return;
+    if (mq('(hover: none), (pointer: coarse)').matches) return; // skip touch
+    if (mq('(max-width: 900px)').matches) return;
+
+    var current = window.scrollY;
+    var target = current;
+    var active = false;
+    var programmatic = false;
+    var ease = 0.11;
+
+    function maxScroll() {
+      return Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+    }
+    function clamp(v) { return Math.max(0, Math.min(v, maxScroll())); }
+
+    function loop() {
+      current += (target - current) * ease;
+      if (Math.abs(target - current) < 0.4) { current = target; active = false; }
+      programmatic = true;
+      window.scrollTo(0, Math.round(current));
+      programmatic = false;
+      if (active) requestAnimationFrame(loop);
+    }
+
+    window.addEventListener('wheel', function (e) {
+      if (e.ctrlKey) return;                 // let pinch-zoom through
+      e.preventDefault();
+      var d = e.deltaY * (e.deltaMode === 1 ? 32 : 1);
+      target = clamp(target + d);
+      if (!active) { active = true; current = window.scrollY; requestAnimationFrame(loop); }
+    }, { passive: false });
+
+    // keep target in sync with scrolls we didn't cause (anchors, keyboard, drag)
+    window.addEventListener('scroll', function () {
+      if (!active && !programmatic) target = window.scrollY;
+    }, { passive: true });
+    window.addEventListener('resize', function () { target = clamp(target); });
+  }
+
   function init() {
     inject();
     initMenu();
     initReveal();
+    initSmoothScroll();
   }
 
   if (document.readyState === 'loading') {
