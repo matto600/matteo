@@ -1,0 +1,8 @@
+---
+deployment:
+  tasks:
+    # Copia il contenuto di site/ nella web-root del dominio.
+    # $HOME = home dell'utente cPanel. Se il sito sta in un sottodominio/addon,
+    # cambia il percorso (es. $HOME/brut.milano.it/ ).
+    - export DEPLOYPATH=$HOME/public_html/
+    - /bin/cp -R site/. "$DEPLOYPATH"

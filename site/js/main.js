@@ -113,46 +113,31 @@
     targets.forEach(function (el) { io.observe(el); });
   }
 
-  // inertia smooth scroll (wheel), keeps native sticky header working
+  // smooth scroll via Lenis (well-tuned), keeps sticky header + reveal working
   function initSmoothScroll() {
     var mq = window.matchMedia;
     if (mq('(prefers-reduced-motion: reduce)').matches) return;
-    if (mq('(hover: none), (pointer: coarse)').matches) return; // skip touch
-    if (mq('(max-width: 900px)').matches) return;
+    if (typeof Lenis === 'undefined') return;
 
-    var current = window.scrollY;
-    var target = current;
-    var active = false;
-    var programmatic = false;
-    var ease = 0.11;
+    var lenis = new Lenis({
+      lerp: 0.1,
+      wheelMultiplier: 1,
+      smoothWheel: true
+    });
+    function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+    requestAnimationFrame(raf);
 
-    function maxScroll() {
-      return Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
-    }
-    function clamp(v) { return Math.max(0, Math.min(v, maxScroll())); }
-
-    function loop() {
-      current += (target - current) * ease;
-      if (Math.abs(target - current) < 0.4) { current = target; active = false; }
-      programmatic = true;
-      window.scrollTo(0, Math.round(current));
-      programmatic = false;
-      if (active) requestAnimationFrame(loop);
-    }
-
-    window.addEventListener('wheel', function (e) {
-      if (e.ctrlKey) return;                 // let pinch-zoom through
+    // in-page anchor links scroll smoothly through Lenis
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest('a[href^="#"]');
+      if (!a) return;
+      var id = a.getAttribute('href');
+      if (id.length < 2) return;
+      var el = document.querySelector(id);
+      if (!el) return;
       e.preventDefault();
-      var d = e.deltaY * (e.deltaMode === 1 ? 32 : 1);
-      target = clamp(target + d);
-      if (!active) { active = true; current = window.scrollY; requestAnimationFrame(loop); }
-    }, { passive: false });
-
-    // keep target in sync with scrolls we didn't cause (anchors, keyboard, drag)
-    window.addEventListener('scroll', function () {
-      if (!active && !programmatic) target = window.scrollY;
-    }, { passive: true });
-    window.addEventListener('resize', function () { target = clamp(target); });
+      lenis.scrollTo(el, { offset: 0, duration: 1.1 });
+    });
   }
 
   function init() {

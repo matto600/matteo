@@ -190,3 +190,9 @@ ul{list-style:none}
 
 .falsificato-wrap{padding-inline:10.7rem;margin-top:1rem}
 .falsificato-wrap .note-falsificato{width:46rem;margin:0}
+
+/* ---------- Lenis smooth scroll ---------- */
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+.lenis.lenis-smooth [data-lenis-prevent]{overscroll-behavior:contain}
+.lenis.lenis-stopped{overflow:hidden}
