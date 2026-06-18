@@ -31,6 +31,11 @@ corrispondente e riportare con precisione TUTTE le discrepanze, ordinate per gra
 
 ## Cosa verificare
 - **Delta altezza**: render vs mockup (proporzioni verticali complessive).
+- **Immagini tagliate/troncate**: confronta OGNI illustrazione/foto del render con la
+  stessa nel mockup e segnala se appare **mozzata** (testa/bordi mancanti, testo
+  baked-in tagliato es. "CON LO" invece di "CON L'ORARIO FALSIFICATO"). Spesso la
+  causa è un file-asset già ritagliato male nel drive: in tal caso suggerisci di
+  **ritagliare l'illustrazione completa dal mockup** invece di usare il file.
 - Posizione/dimensione di: titoli, paragrafi, illustrazioni, foto, note manoscritte,
   header, footer, claim.
 - Allineamenti, spaziature (padding/margini), proporzioni dei font.
