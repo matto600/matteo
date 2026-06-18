@@ -249,3 +249,44 @@ html.lenis,html.lenis body{height:auto}
 .lenis.lenis-smooth{scroll-behavior:auto!important}
 .lenis.lenis-smooth [data-lenis-prevent]{overscroll-behavior:contain}
 .lenis.lenis-stopped{overflow:hidden}
+
+/* ============================================================
+   QA refinements (pixel-QA driven) — DESKTOP only (>=1025px)
+   ============================================================ */
+@media (min-width:1025px){
+  /* Header slightly larger (all pages) */
+  .main-nav a{font-size:1.7rem}
+  .logo img{height:3.75rem}
+  .site-header .container{padding-top:1.3rem;padding-bottom:1.3rem}
+
+  /* Parenthetical subheads: bigger serif (Home) */
+  .subhead{font-size:4.6rem}
+
+  /* ---- HOME ---- */
+  .list-plain{font-size:3rem;line-height:1.14}
+  .linklist{font-size:3rem}
+  .cosa .heading,.insieme .heading{font-size:9rem}
+  .insieme .linklist li:first-child a{color:#d8cf1f}
+  .bullet{border-color:#d8cf1f}
+  body.page-home .section{padding-block:4rem}
+
+  /* ---- ART BRUT ---- */
+  .giraffe-media img{max-width:44rem;margin-inline:auto}
+  .brut-mark{width:15rem;display:block;margin-bottom:1rem}
+  .outsider .media-ink{margin-right:-6rem}
+  .outsider .media-ink img{width:auto;max-height:42rem;margin-left:auto}
+  .note-falsificato{width:54rem}
+  body.page-artbrut .full-photo img{max-width:1442px}
+  body.page-artbrut .section{padding-block:7rem}
+
+  /* ---- LAVORI: showcase full-bleed + overlaid labels ---- */
+  .showcase > .container{max-width:none;padding-inline:0}
+  .showcase__grid{grid-template-columns:1fr 1fr;gap:0;margin-top:0}
+  .product{position:relative;overflow:hidden}
+  .product img{width:100%;height:clamp(360px,31vw,600px);object-fit:cover}
+  .showcase__label{position:absolute;text-transform:uppercase;font-size:6rem;margin:0;color:#ECE71D;-webkit-text-stroke:1px #cbc11c;z-index:2}
+  .product:nth-child(1) .showcase__label{top:.12em;left:.34em}
+  .product:nth-child(2) .showcase__label{bottom:.04em;right:.34em}
+  body.page-lavori .split--center{grid-template-columns:1.4fr .6fr}
+  body.page-lavori .lead{max-width:34rem}
+}
