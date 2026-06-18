@@ -130,6 +130,8 @@ body.footer-light .site-footer::before{display:none}
 body.footer-light .footer-email{color:var(--yellow)}
 body.footer-light .footer-dona,
 body.footer-light .footer-info{color:var(--ink)}
+body.footer-light .footer-center{text-align:center}
+body.footer-light .footer-logo{align-self:end}
 
 /* ---------- Art Brut page extras ---------- */
 .outsider__row{display:flex;align-items:flex-start;gap:3rem}
@@ -152,9 +154,9 @@ body.footer-light .footer-info{color:var(--ink)}
 
 /* ---------- Aziende lists ---------- */
 .note-maseimatto{width:18.75rem;margin:.4rem 0 1.1rem}
-.services-sec{padding-top:2.5rem}
+.services-sec{padding-block:.6rem 4rem}
 .services-sec > .container{padding-inline:10.7rem 3.4rem}
-.services-list{font-family:var(--f-display);color:var(--yellow);font-size:7rem;line-height:1.04;-webkit-text-stroke:1px #d6d200;white-space:nowrap}
+.services-list{font-family:var(--f-display);color:var(--yellow);font-size:8rem;line-height:1.12;-webkit-text-stroke:1px #d6d200;white-space:nowrap}
 .services-list li{text-transform:uppercase}
 .perche .subhead{margin-bottom:.6em}
 .yellow-list{color:var(--yellow);font-weight:700;font-size:2.6rem;line-height:1.5;margin-top:.5em;-webkit-text-stroke:.5px #cfcb10}
