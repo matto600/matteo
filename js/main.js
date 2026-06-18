@@ -40,9 +40,9 @@
           </a>\
           <div class="footer-info">\
             <div>Brut Outsider Lab</div>\
-            <div>C.F. 97965590157</div>\
+            <div>C.F.97965590157</div>\
             <div class="row"><img src="assets/img/Footer__sito-17.png" alt="">Magnete, Via Adriano 107, Milano</div>\
-            <div class="row"><img src="assets/img/Footer__sito-18.png" alt="">+39 347 957 6243</div>\
+            <div class="row"><img src="assets/img/Footer__sito-18.png" alt="">+39 3479576243</div>\
           </div>\
         </div>\
         <div class="footer-center">\
