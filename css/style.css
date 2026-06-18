@@ -78,7 +78,7 @@ ul{list-style:none}
 .eyebrow-hand img{width:30rem;margin-bottom:1rem}
 
 .heading{font-family:var(--f-head);font-weight:700;text-transform:uppercase;font-size:8rem;line-height:.92;letter-spacing:.005em}
-.subhead{font-family:var(--f-head);font-weight:700;font-style:italic;font-size:3.4rem;line-height:1.05;margin-top:.2em}
+.subhead{font-family:Georgia,'Times New Roman',serif;font-weight:400;font-style:italic;font-size:2.9rem;line-height:1.1;margin-top:.3em}
 .lead{font-size:1.85rem;line-height:1.5;max-width:38ch;margin-top:1.1em;font-weight:400}
 .list-plain{margin-top:1.2em;font-size:1.95rem}
 .list-plain li{margin-bottom:.35em;font-weight:500}
@@ -117,11 +117,14 @@ ul{list-style:none}
 .claim--center .claim__img{margin-inline:auto;width:68rem;max-width:100%}
 
 /* ---------- Aziende bottom: photo (inset) + claim on yellow ---------- */
-.bottom-yellow{background:var(--yellow);padding-block:4rem 5rem}
+.bottom-yellow{background:var(--yellow);padding-block:4rem 5rem;position:relative}
+.bottom-yellow > .container{padding-inline:10.7rem}
 .az-photo{width:100%;display:block}
 .bottom-claim{display:block;margin:4rem auto 0;width:68rem;max-width:100%}
+.bottom-yellow::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2.1rem;background:radial-gradient(circle at 1.9rem 0, #fff 1.9rem, transparent 2rem);background-size:3.75rem 2.1rem;background-repeat:repeat-x;background-position:center bottom}
 
-/* Aziende footer is WHITE (page-specific) */
+/* Aziende: header + footer WHITE (page-specific) */
+body.footer-light .site-header{background:#fff}
 body.footer-light .site-footer{background:#fff}
 body.footer-light .site-footer::before{display:none}
 body.footer-light .footer-email{color:var(--yellow)}
@@ -150,7 +153,8 @@ body.footer-light .footer-info{color:var(--ink)}
 /* ---------- Aziende lists ---------- */
 .note-maseimatto{width:18.75rem;margin:.4rem 0 1.1rem}
 .services-sec{padding-top:2.5rem}
-.services-list{font-family:var(--f-display);color:var(--yellow);font-size:6rem;line-height:1.06;-webkit-text-stroke:1px #d6d200}
+.services-sec > .container{padding-inline:10.7rem 3.4rem}
+.services-list{font-family:var(--f-display);color:var(--yellow);font-size:7rem;line-height:1.04;-webkit-text-stroke:1px #d6d200;white-space:nowrap}
 .services-list li{text-transform:uppercase}
 .perche .subhead{margin-bottom:.6em}
 .yellow-list{color:var(--yellow);font-weight:700;font-size:2.6rem;line-height:1.5;margin-top:.5em;-webkit-text-stroke:.5px #cfcb10}
@@ -203,6 +207,9 @@ body.footer-light .footer-info{color:var(--ink)}
   .outsider__row{flex-direction:column;gap:1.2rem}
   .outsider__row .split{grid-template-columns:1fr}
   .outsider .media-ink{margin-right:0}
+  .bottom-yellow > .container{padding-inline:20px}
+  .services-list{font-size:2.4rem}
+  .yellow-list{font-size:1.25rem}
   .media-ink{order:-1}
   .media-ink img{max-width:520px}
   .note-totalmente{justify-self:start;width:min(60%,300px)}
