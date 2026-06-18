@@ -34,18 +34,20 @@
   <footer class="site-footer" id="footer">\
     <div class="container">\
       <div class="footer-grid">\
-        <a class="footer-ig" href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram">\
-          <img src="assets/img/Footer__sito-16.png" alt="">\
-        </a>\
-        <div class="footer-center">\
-          <a class="footer-email" href="mailto:lab@brut.milano.it">lab@brut.milano.it</a>\
-          <div class="footer-dona">DONA IL 5X1000</div>\
+        <div class="footer-left">\
+          <a class="footer-ig" href="https://instagram.com" target="_blank" rel="noopener" aria-label="Instagram">\
+            <img src="assets/img/Footer__sito-16.png" alt="">\
+          </a>\
           <div class="footer-info">\
             <div>Brut Outsider Lab</div>\
             <div>C.F. 97965590157</div>\
             <div class="row"><img src="assets/img/Footer__sito-17.png" alt="">Magnete, Via Adriano 107, Milano</div>\
             <div class="row"><img src="assets/img/Footer__sito-18.png" alt="">+39 347 957 6243</div>\
           </div>\
+        </div>\
+        <div class="footer-center">\
+          <a class="footer-email" href="mailto:lab@brut.milano.it">lab@brut.milano.it</a>\
+          <div class="footer-dona">DONA IL 5X1000</div>\
         </div>\
         <a class="footer-logo" href="/" aria-label="BRUT">\
           <img src="assets/img/PaginaArtbrut__sito-28.png" alt="BRUT">\

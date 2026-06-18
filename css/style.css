@@ -172,14 +172,16 @@ body.footer-light .footer-logo{align-self:end}
   background:radial-gradient(circle at 1.9rem 2.1rem, var(--yellow) 1.9rem, transparent 2rem);
   background-size:3.75rem 2.1rem;background-repeat:repeat-x;background-position:center top;
 }
-.footer-grid{display:grid;grid-template-columns:auto 1fr auto;gap:3.75rem;align-items:start}
+.footer-grid{display:grid;grid-template-columns:auto 1fr auto;gap:3.75rem;align-items:stretch}
+.footer-left{display:flex;flex-direction:column;gap:1.6rem}
 .footer-ig img{width:2.875rem}
-.footer-center{align-self:center}
+.footer-center{align-self:center;text-align:center}
 .footer-email{font-family:var(--f-display);color:var(--white);font-size:6rem;line-height:.95}
 .footer-dona{font-family:var(--f-display);color:var(--ink);font-size:4rem;line-height:1;margin-top:.05em}
 .footer-info{font-size:1.15rem;line-height:1.7;margin-top:.6rem}
 .footer-info .row{display:flex;align-items:center;gap:.5rem}
 .footer-info .row img{width:1rem}
+.footer-logo{align-self:end}
 .footer-logo img{width:11.25rem}
 
 /* ---------- Scroll reveal ---------- */
@@ -261,6 +263,7 @@ html.lenis,html.lenis body{height:auto}
 
   /* Parenthetical subheads: bigger serif (Home) */
   .subhead{font-size:4.6rem}
+  .claim--center .claim__img{width:58rem}
 
   /* ---- HOME ---- */
   .list-plain{font-size:3rem;line-height:1.14}
@@ -271,22 +274,23 @@ html.lenis,html.lenis body{height:auto}
   body.page-home .section{padding-block:4rem}
 
   /* ---- ART BRUT ---- */
-  .giraffe-media img{max-width:44rem;margin-inline:auto}
+  .giraffe-media img{max-width:48rem;margin-inline:auto}
   .brut-mark{width:15rem;display:block;margin-bottom:1rem}
   .outsider .media-ink{margin-right:-6rem}
-  .outsider .media-ink img{width:auto;max-height:42rem;margin-left:auto}
+  .outsider .media-ink img{width:auto;max-height:50rem;margin-left:auto}
   .note-falsificato{width:54rem}
   body.page-artbrut .full-photo img{max-width:1442px}
-  body.page-artbrut .section{padding-block:7rem}
+  body.page-artbrut .section{padding-block:10rem}
 
   /* ---- LAVORI: showcase full-bleed + overlaid labels ---- */
   .showcase > .container{max-width:none;padding-inline:0}
   .showcase__grid{grid-template-columns:1fr 1fr;gap:0;margin-top:0}
   .product{position:relative;overflow:hidden}
-  .product img{width:100%;height:clamp(360px,31vw,600px);object-fit:cover}
+  .product img{width:100%;height:auto;display:block}
   .showcase__label{position:absolute;text-transform:uppercase;font-size:6rem;margin:0;color:#ECE71D;-webkit-text-stroke:1px #cbc11c;z-index:2}
   .product:nth-child(1) .showcase__label{top:.12em;left:.34em}
   .product:nth-child(2) .showcase__label{bottom:.04em;right:.34em}
   body.page-lavori .split--center{grid-template-columns:1.4fr .6fr}
   body.page-lavori .lead{max-width:34rem}
+  body.page-lavori .section{padding-block:8.5rem}
 }
