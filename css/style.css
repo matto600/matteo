@@ -67,6 +67,7 @@ ul{list-style:none}
 
 /* ---------- Hero (composed image) ---------- */
 .hero--home{background:var(--yellow)}
+.hero--aziende{background:linear-gradient(to bottom,var(--yellow) 0 58%,#fff 58% 100%)}
 .hero__art img{width:100%;max-width:var(--page-max);margin-inline:auto;display:block}
 .hero-banner img{width:100%;max-width:var(--page-max);margin-inline:auto;display:block}
 .full-photo img{width:100%;max-width:var(--page-max);margin-inline:auto;display:block}
@@ -107,6 +108,8 @@ ul{list-style:none}
 .insieme__media img{order:1}
 
 /* ---------- claim ---------- */
+.claim--yellow{background:var(--yellow);position:relative;margin-top:2.1rem}
+.claim--yellow::before{content:"";position:absolute;top:-1.9rem;left:0;right:0;height:2.1rem;background:radial-gradient(circle at 1.9rem 2.1rem, var(--yellow) 1.9rem, transparent 2rem);background-size:3.75rem 2.1rem;background-repeat:repeat-x;background-position:center top}
 .claim{padding-block:4.375rem}
 .claim .split{grid-template-columns:1.55fr .5fr;align-items:center}
 .claim__img{width:100%;max-width:68rem}
@@ -134,8 +137,8 @@ ul{list-style:none}
 
 /* ---------- Aziende lists ---------- */
 .note-maseimatto{width:18.75rem;margin:.4rem 0 1.1rem}
-.services-sec{background:var(--yellow);padding-top:.5rem;margin-top:-1px}
-.services-list{font-family:var(--f-display);color:var(--ink);font-size:3.6rem;line-height:1.08}
+.services-sec{padding-top:2.5rem}
+.services-list{font-family:var(--f-display);color:var(--yellow);font-size:3.6rem;line-height:1.08;-webkit-text-stroke:1px #d6d200}
 .services-list li{text-transform:uppercase}
 .perche .subhead{margin-bottom:.6em}
 .yellow-list{color:var(--yellow);font-weight:700;font-size:1.7rem;line-height:1.55;margin-top:.4em;-webkit-text-stroke:.4px #cfcb10}
