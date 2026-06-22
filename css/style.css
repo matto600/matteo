@@ -103,9 +103,10 @@ ul{list-style:none}
 .linklist a{font-weight:700;text-decoration:underline;text-underline-offset:3px}
 .linklist a:hover{color:#9c9a13}
 .bullet{width:.7em;height:.7em;border:.18rem solid var(--ink);border-radius:50%;flex:0 0 auto}
-.insieme__media{display:flex;flex-direction:column;align-items:flex-end}
-.insieme__media .peacock{width:100%;max-width:42rem}
-.note-esplosione{width:24rem;margin-left:-34rem;margin-top:-2rem;align-self:flex-start}
+.insieme .split--center{position:relative}
+.insieme__media{display:block}
+.insieme__media .peacock{width:100%;max-width:52rem;margin-left:auto;display:block}
+.insieme__media .note-esplosione{position:absolute;left:35%;top:37rem;width:42rem;margin:0;z-index:2}
 
 /* ---------- claim ---------- */
 .claim--yellow{background:var(--yellow);position:relative;margin-top:2.1rem}
@@ -221,6 +222,7 @@ body.footer-light .footer-logo{align-self:end}
   .media-ink{order:-1}
   .media-ink img{max-width:520px}
   .note-totalmente{justify-self:start;width:min(60%,300px)}
+  .insieme__media .note-esplosione{position:static;left:auto;top:auto;margin-top:1rem}
   .note-falsificato,.note-esplosione,.note-infotac,.note-maseimatto,.eyebrow-hand img{width:min(80%,360px)}
   .footer-grid{grid-template-columns:auto 1fr;gap:1.2rem 1.4rem}
   .footer-logo{grid-column:1 / -1}
@@ -301,14 +303,16 @@ html.lenis,html.lenis body{height:auto}
   .product:nth-child(2) .showcase__label{bottom:.04em;right:.34em}
   body.page-lavori .split--center{grid-template-columns:1.4fr .6fr}
   body.page-lavori .lead{max-width:44rem}
-  body.page-lavori .heading{font-size:9rem}
+  body.page-lavori .heading{font-size:9rem;white-space:nowrap}
   body.page-lavori .section{padding-block:9rem}
-  body.page-lavori .falsificato-wrap .note-falsificato{width:62rem;margin-top:3rem}
+  body.page-lavori .claim--center .claim__img{width:80rem}
+  body.page-lavori .falsificato-wrap{position:relative;z-index:2;margin-bottom:-5rem}
+  body.page-lavori .falsificato-wrap .note-falsificato{width:64rem;margin-top:2rem}
 
   /* ---- AZIENDE ---- */
   .perche .heading{font-size:9.5rem}
   .perche .cta-line .link-u{font-size:3rem}
-  .perche .cta-line .arrow{width:11rem}
+  .perche .cta-line .arrow{width:15rem}
   body.footer-light .services-list{line-height:1.22}
   body.footer-light .bottom-yellow{padding-block:4.5rem 3rem}
 }
