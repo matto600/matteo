@@ -40,7 +40,7 @@ html{
   --white:#fff;
   --page-max:1920px;       /* il contenuto/le immagini non superano 1920, centrati */
   --pad:3.4rem;            /* ~54px: margine header/footer */
-  --f-display:"Anton",system-ui,sans-serif;
+  --f-display:"Kenyan Coffee","Anton",sans-serif;
   --f-head:"Anton",sans-serif;
   --f-nav:"OT2049","Libre Franklin",monospace;
   --f-serif:"Moderno FB Cond",Georgia,serif;
@@ -163,14 +163,14 @@ body.footer-light .footer-logo{align-self:end}
 
 /* ---------- Lavori showcase ---------- */
 .showcase__grid{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;margin-top:2rem}
-.showcase__label{font-family:var(--f-display);color:var(--yellow);font-size:5.5rem;line-height:1;margin-bottom:.25em;-webkit-text-stroke:1px #d6d200}
+.showcase__label{font-family:var(--f-display);font-weight:700;color:var(--yellow);font-size:5.5rem;line-height:1;margin-bottom:.25em;-webkit-text-stroke:1px #d6d200}
 .product img{width:100%;height:auto}
 
 /* ---------- Aziende lists ---------- */
 .note-maseimatto{width:18.75rem;margin:.4rem 0 1.1rem}
 .services-sec{padding-block:0 4rem;margin-top:-4.5rem}
 .services-sec > .container{padding-inline:10.7rem 3.4rem}
-.services-list{font-family:var(--f-display);color:#d8cf1f;font-size:7.5rem;line-height:1.14;-webkit-text-stroke:1px #cbc11c;white-space:nowrap}
+.services-list{font-family:var(--f-display);font-weight:700;color:#d8cf1f;font-size:8rem;line-height:1.1;-webkit-text-stroke:1px #cbc11c;white-space:nowrap}
 .services-list li{text-transform:uppercase}
 .perche .subhead{margin-bottom:.5em;font-size:4.4rem;line-height:1.1}
 .yellow-list{color:#d8cf1f;font-weight:700;font-size:3.6rem;line-height:1.4;margin-top:.5em;-webkit-text-stroke:.5px #cbc11c}
@@ -186,8 +186,8 @@ body.footer-light .footer-logo{align-self:end}
 .footer-left{display:flex;flex-direction:column;gap:1.6rem}
 .footer-ig img{width:2.875rem}
 .footer-center{align-self:center;text-align:center}
-.footer-email{font-family:var(--f-display);color:var(--white);font-size:6rem;line-height:.95}
-.footer-dona{font-family:var(--f-display);color:var(--ink);font-size:4rem;line-height:1;margin-top:.05em}
+.footer-email{font-family:var(--f-display);font-weight:700;color:var(--white);font-size:6.4rem;line-height:.95}
+.footer-dona{font-family:var(--f-display);font-weight:700;color:var(--ink);font-size:4.2rem;line-height:1;margin-top:.05em}
 .footer-info{font-size:1.15rem;line-height:1.7;margin-top:.6rem}
 .footer-info .row{display:flex;align-items:center;gap:.5rem}
 .footer-info .row img{width:1rem}
@@ -294,7 +294,8 @@ html.lenis,html.lenis body{height:auto}
   body.page-home .chisiamo .lead{max-width:36rem}
 
   /* ---- ART BRUT ---- */
-  .giraffe-media img{max-width:48rem;margin-inline:auto}
+  .giraffe-media{margin-left:-10.7rem}
+  .giraffe-media img{max-width:none;width:54rem;margin-right:auto}
   .brut-mark{width:15rem;display:block;margin-bottom:1rem}
   .outsider .media-ink{margin-right:-6rem;overflow:visible}
   .outsider .media-ink img{width:auto;max-height:62rem;margin-left:auto}
