@@ -103,9 +103,9 @@ ul{list-style:none}
 .linklist a{font-weight:700;text-decoration:underline;text-underline-offset:3px}
 .linklist a:hover{color:#9c9a13}
 .bullet{width:.7em;height:.7em;border:.18rem solid var(--ink);border-radius:50%;flex:0 0 auto}
-.insieme__media{display:flex;flex-direction:column;align-items:flex-start}
-.insieme__media .peacock{width:100%;max-width:30rem}
-.note-esplosione{width:25rem;margin-left:-16rem;margin-top:-6rem}
+.insieme__media{display:flex;flex-direction:column;align-items:flex-end}
+.insieme__media .peacock{width:100%;max-width:42rem}
+.note-esplosione{width:24rem;margin-left:-34rem;margin-top:-2rem;align-self:flex-start}
 
 /* ---------- claim ---------- */
 .claim--yellow{background:var(--yellow);position:relative;margin-top:2.1rem}
@@ -277,16 +277,19 @@ html.lenis,html.lenis body{height:auto}
   .insieme .linklist li:first-child a{color:#d8cf1f}
   .list-plain li{font-weight:700}
   .bullet{background:#d8cf1f;border-color:#d8cf1f}
-  body.page-home .section{padding-block:3.4rem}
+  body.page-home .section{padding-block:4.7rem}
+  body.page-home .chisiamo .lead{max-width:34rem}
 
   /* ---- ART BRUT ---- */
   .giraffe-media img{max-width:48rem;margin-inline:auto}
   .brut-mark{width:15rem;display:block;margin-bottom:1rem}
-  .outsider .media-ink{margin-right:-6rem}
-  .outsider .media-ink img{width:auto;max-height:50rem;margin-left:auto}
-  .note-falsificato{width:54rem}
+  .outsider .media-ink{margin-right:-6rem;overflow:visible}
+  .outsider .media-ink img{width:auto;max-height:62rem;margin-left:auto}
+  .brut-mark{width:21rem}
+  .note-infotac{width:30rem;margin-bottom:-1rem;margin-left:8rem}
+  .note-falsificato{width:54rem;margin-left:-10rem}
   body.page-artbrut .full-photo img{max-width:1442px}
-  body.page-artbrut .section{padding-block:10rem}
+  body.page-artbrut .section{padding-block:11rem}
 
   /* ---- LAVORI: showcase full-bleed + overlaid labels ---- */
   .showcase > .container{max-width:none;padding-inline:0}
@@ -297,6 +300,15 @@ html.lenis,html.lenis body{height:auto}
   .product:nth-child(1) .showcase__label{top:.12em;left:.34em}
   .product:nth-child(2) .showcase__label{bottom:.04em;right:.34em}
   body.page-lavori .split--center{grid-template-columns:1.4fr .6fr}
-  body.page-lavori .lead{max-width:40rem}
-  body.page-lavori .section{padding-block:8.5rem}
+  body.page-lavori .lead{max-width:44rem}
+  body.page-lavori .heading{font-size:9rem}
+  body.page-lavori .section{padding-block:9rem}
+  body.page-lavori .falsificato-wrap .note-falsificato{width:62rem;margin-top:3rem}
+
+  /* ---- AZIENDE ---- */
+  .perche .heading{font-size:9.5rem}
+  .perche .cta-line .link-u{font-size:3rem}
+  .perche .cta-line .arrow{width:11rem}
+  body.footer-light .services-list{line-height:1.22}
+  body.footer-light .bottom-yellow{padding-block:4.5rem 3rem}
 }
