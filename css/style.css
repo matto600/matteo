@@ -59,9 +59,9 @@ ul{list-style:none}
 
 /* ---------- Header (global, single style, sticky) ---------- */
 .site-header{position:sticky;top:0;z-index:30;background:var(--yellow)}
-.site-header .container{display:flex;align-items:center;justify-content:space-between;padding-top:1rem;padding-bottom:1rem;gap:1.5rem}
+.site-header .container{display:flex;align-items:center;justify-content:flex-start;padding-top:1rem;padding-bottom:1rem;gap:1.8rem}
 .logo img{height:3.375rem;width:auto}
-.main-nav{display:flex;align-items:center;gap:2.5rem}
+.main-nav{display:flex;align-items:center;gap:2.2rem;margin-left:auto}
 .main-nav a{font-family:var(--f-nav);font-weight:400;text-transform:uppercase;letter-spacing:.02em;font-size:1.5rem}
 .main-nav a:hover,.main-nav a[aria-current=page]{opacity:.55}
 .btn-pill{border:.16rem solid var(--ink);border-radius:999px;padding:.5em 1.3em;line-height:1}
@@ -88,7 +88,7 @@ ul{list-style:none}
 
 .heading{font-family:var(--f-head);font-weight:700;text-transform:uppercase;font-size:8rem;line-height:.92;letter-spacing:.005em}
 .subhead{font-family:var(--f-serif);font-weight:700;font-style:italic;font-size:2.9rem;line-height:1.1;margin-top:.3em}
-.lead{font-size:2.2rem;line-height:1.5;max-width:34ch;margin-top:1.1em;font-weight:400}
+.lead{font-size:2.2rem;line-height:1.5;max-width:36ch;margin-top:1.1em;font-weight:400}
 .list-plain{margin-top:1.2em;font-size:1.95rem}
 .list-plain li{margin-bottom:.35em;font-weight:500}
 
@@ -284,14 +284,14 @@ html.lenis,html.lenis body{height:auto}
   /* ---- HOME ---- */
   .list-plain{font-size:3rem;line-height:1.14}
   .linklist{font-size:3rem}
-  .cosa .heading,.insieme .heading{font-size:9rem}
+  .cosa .heading,.insieme .heading{font-size:9rem;white-space:nowrap}
   .cosa .media-ink{margin-right:-7rem}
   .cosa .media-ink img{width:auto;max-height:44rem;margin-left:auto;display:block}
   .insieme .subhead{white-space:nowrap}
   .insieme .linklist li:first-child a{color:#d8cf1f}
   .list-plain li{font-weight:700}
   body.page-home .section{padding-block:4.7rem}
-  body.page-home .chisiamo .lead{max-width:34rem}
+  body.page-home .chisiamo .lead{max-width:36rem}
 
   /* ---- ART BRUT ---- */
   .giraffe-media img{max-width:48rem;margin-inline:auto}
@@ -316,7 +316,7 @@ html.lenis,html.lenis body{height:auto}
   body.page-lavori .lead{max-width:44rem}
   body.page-lavori .heading{font-size:9rem;white-space:nowrap}
   body.page-lavori .section{padding-block:9rem}
-  body.page-lavori .claim--center .claim__img{width:80rem}
+  body.page-lavori .claim--center .claim__img{width:65rem}
   body.page-lavori .falsificato-wrap{position:relative;z-index:2;margin-bottom:-5rem}
   body.page-lavori .falsificato-wrap .note-falsificato{width:64rem;margin-top:2rem}
 
@@ -324,6 +324,6 @@ html.lenis,html.lenis body{height:auto}
   .perche .heading{font-size:9.5rem}
   .perche .cta-line .link-u{font-size:2.6rem;font-family:Arial,Helvetica,sans-serif;font-weight:400;text-transform:none;letter-spacing:normal}
   .perche .cta-line .arrow{width:14rem}
-  body.footer-light .services-list{line-height:1.22}
+  body.footer-light .services-list{line-height:1.08;font-size:7.2rem}
   body.footer-light .bottom-yellow{padding-block:4.5rem 3rem}
 }
