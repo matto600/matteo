@@ -111,7 +111,7 @@ ul{list-style:none}
 .linklist li{display:flex;align-items:center;gap:.5em;margin-bottom:.45em}
 .linklist a{font-weight:700;text-decoration:underline;text-underline-offset:3px}
 .linklist a:hover{color:#9c9a13}
-.bullet{width:.5em;height:1.15em;border:none;border-radius:0;flex:0 0 auto;background:url("../assets/img/bullet_flower.png") center/contain no-repeat;align-self:flex-start;margin-top:.12em}
+.bullet{width:1em;height:1em;border:none;border-radius:0;flex:0 0 auto;background:url("../assets/img/bullet_flower.png") center/contain no-repeat;align-self:center}
 .insieme .split--center{position:relative}
 .insieme__media{display:block}
 .insieme__media .peacock{width:100%;max-width:52rem;margin-left:auto;display:block}
