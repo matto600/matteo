@@ -314,8 +314,8 @@ html.lenis,html.lenis body{height:auto}
   .product:nth-child(1) .showcase__label{top:.12em;left:.34em}
   .product:nth-child(2) .showcase__label{bottom:.04em;right:.34em}
   body.page-lavori .split--center{grid-template-columns:1fr .9fr;align-items:start}
-  body.page-lavori .media-ink{margin-right:-10.7rem}
-  body.page-lavori .media-ink img{width:auto;max-width:none;max-height:52rem;margin-left:auto}
+  body.page-lavori .media-ink{margin-right:-10.7rem;margin-bottom:-9rem}
+  body.page-lavori .media-ink img{width:auto;max-width:none;max-height:58rem;margin-left:auto}
   body.page-lavori .lead{max-width:44rem}
   body.page-lavori .heading{font-size:9rem;white-space:nowrap}
   body.page-lavori .section{padding-block:9rem}
