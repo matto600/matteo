@@ -207,6 +207,10 @@ body.footer-light .footer-logo{align-self:end}
   .js .full-photo.is-visible:not(.hero-photo){opacity:1;transform:none}
 }
 
+/* falsificato note wrapper (desktop base; mobile overridden below) */
+.falsificato-wrap{padding-inline:10.7rem;margin-top:1rem}
+.falsificato-wrap .note-falsificato{width:46rem;margin:0}
+
 /* ============================================================
    MOBILE / TABLET (≤1024px): layout fisso e stack, fuori dal
    sistema proporzionale desktop.
@@ -216,47 +220,55 @@ body.footer-light .footer-logo{align-self:end}
   :root{--pad:20px}
   .container{padding-inline:20px}
   .section > .container{padding-inline:20px}
-  .falsificato-wrap{padding-inline:20px}
-  .section{padding-block:3.2rem}
+  .falsificato-wrap{padding-inline:20px;margin-top:0}
+  .section{padding-block:2.6rem}
   .menu-toggle{display:inline-flex}
   .main-nav{display:none}
-  .split,.chisiamo__grid,.showcase__grid,.claim .split{grid-template-columns:1fr;gap:1.6rem}
+  .split,.chisiamo__grid,.showcase__grid,.claim .split{grid-template-columns:1fr;gap:1.4rem}
   .chisiamo__grid{justify-items:start}
   .claim .media-ink{display:none}
   .outsider__row{flex-direction:column;gap:1.2rem}
-  .outsider__row .split{grid-template-columns:1fr}
+  .outsider__row .split{grid-template-columns:1fr;gap:1.4rem}
   .outsider .media-ink{margin-right:0}
   .bottom-yellow > .container{padding-inline:20px}
-  .services-list{font-size:2.4rem}
   .yellow-list{font-size:1.25rem}
-  .media-ink{order:-1}
-  .media-ink img{max-width:520px}
-  .note-totalmente{justify-self:start;width:min(60%,300px)}
-  .insieme__media .note-esplosione{position:static;left:auto;top:auto;margin-top:1rem}
-  .note-falsificato,.note-esplosione,.note-infotac,.note-maseimatto,.eyebrow-hand img{width:min(80%,360px)}
+
+  /* images stay inside their own section (natural order, full-width-capped) */
+  .media-ink{order:0;margin:0}
+  .media-ink img{max-width:100%;width:auto;max-height:none;margin:0 auto}
+  .giraffe-media{margin-left:0}
+  .giraffe-media img,.cosa .media-ink img,.insieme__media .peacock,
+  body.page-lavori .media-ink img,.outsider .media-ink img{width:100%;max-width:440px;height:auto;margin-inline:auto}
+
+  /* handwritten yellow notes: contained, inline */
+  .note-totalmente{justify-self:start;width:min(70%,300px);margin-top:.6rem}
+  .insieme__media .note-esplosione{position:static;left:auto;top:auto;width:min(80%,320px);margin:.6rem 0 0}
+  .note-falsificato,.falsificato-wrap .note-falsificato,.note-infotac,.note-maseimatto,.eyebrow-hand img{width:min(85%,340px);margin:.4rem 0}
+  .brut-mark{width:min(45%,150px)}
+
+  /* services list: wrap, no horizontal overflow */
+  .services-list{font-size:1.9rem;line-height:1.18;white-space:normal;-webkit-text-stroke:.6px #cbc11c}
+
   .footer-grid{grid-template-columns:auto 1fr;gap:1.2rem 1.4rem}
   .footer-logo{grid-column:1 / -1}
   .heading{font-size:2.6rem}
-  .subhead{font-size:1.4rem}
+  .subhead{font-size:1.5rem}
   .lead,.list-plain{font-size:1.05rem}
   .linklist{font-size:1.2rem}
-  .footer-email{font-size:2.1rem}
-  .footer-dona{font-size:1.5rem}
-  .services-list{font-size:2.1rem}
+  .footer-email,body.footer-light .footer-email{font-size:2.1rem}
+  .footer-dona,body.footer-light .footer-dona{font-size:1.5rem}
+  .perche .subhead{font-size:1.7rem;line-height:1.2}
   .yellow-list{font-size:1.05rem}
   .link-u{font-size:1.3rem}
-  .cta-line .arrow{width:64px}
-  .claim__img,.claim--center .claim__img{width:100%}
+  .cta-line .arrow,.perche .cta-line .arrow{width:80px}
+  .claim__img,.claim--center .claim__img,body.page-lavori .claim--center .claim__img{width:100%}
   .vert-milano{display:none}
 }
 @media (max-width:560px){
   .heading{font-size:2.1rem}
   .footer-grid{grid-template-columns:1fr}
-  .media-ink img{max-width:100%}
+  .services-list{font-size:1.7rem}
 }
-
-.falsificato-wrap{padding-inline:10.7rem;margin-top:1rem}
-.falsificato-wrap .note-falsificato{width:46rem;margin:0}
 
 /* ---------- Lenis smooth scroll ---------- */
 html.lenis,html.lenis body{height:auto}
