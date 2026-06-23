@@ -221,7 +221,7 @@ body.footer-light .footer-logo{align-self:end}
   .container{padding-inline:20px}
   .section > .container{padding-inline:20px}
   .falsificato-wrap{padding-inline:20px;margin-top:0}
-  .section{padding-block:2.6rem}
+  .section{padding-block:3.2rem}
   .menu-toggle{display:inline-flex}
   .main-nav{display:none}
   .split,.chisiamo__grid,.showcase__grid,.claim .split{grid-template-columns:1fr;gap:1.4rem}
@@ -238,11 +238,11 @@ body.footer-light .footer-logo{align-self:end}
   .media-ink img{max-width:100%;width:auto;max-height:none;margin:0 auto}
   .giraffe-media{margin-left:0}
   .giraffe-media img,.cosa .media-ink img,.insieme__media .peacock,
-  body.page-lavori .media-ink img,.outsider .media-ink img{width:100%;max-width:440px;height:auto;margin-inline:auto}
+  body.page-lavori .media-ink img,.outsider .media-ink img{width:auto;max-width:min(100%,440px);max-height:64vh;height:auto;margin-inline:auto;display:block}
 
   /* handwritten yellow notes: contained, inline */
   .note-totalmente{justify-self:start;width:min(70%,300px);margin-top:.6rem}
-  .insieme__media .note-esplosione{position:static;left:auto;top:auto;width:min(80%,320px);margin:.6rem 0 0}
+  .insieme__media .note-esplosione{position:static;left:auto;top:auto;width:min(88%,360px);margin:-.6rem 0 0}
   .note-falsificato,.falsificato-wrap .note-falsificato,.note-infotac,.note-maseimatto,.eyebrow-hand img{width:min(85%,340px);margin:.4rem 0}
   .brut-mark{width:min(45%,150px)}
 
@@ -265,9 +265,10 @@ body.footer-light .footer-logo{align-self:end}
   .vert-milano{display:none}
 }
 @media (max-width:560px){
-  .heading{font-size:2.1rem}
+  .heading{font-size:2.35rem}
   .footer-grid{grid-template-columns:1fr}
   .services-list{font-size:1.7rem}
+  .note-totalmente{width:min(62%,260px)}
 }
 
 /* ---------- Lenis smooth scroll ---------- */
