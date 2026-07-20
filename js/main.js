@@ -12,9 +12,9 @@
         <img src="assets/img/Header__sito-26.png" alt="BRUT" width="361" height="98">\
       </a>\
       <nav class="main-nav" aria-label="Principale">\
-        <a href="art-brut">ABOUT</a>\
+        <a href="art-brut">BRUT</a>\
         <a href="lavori">PROGETTI</a>\
-        <a href="https://instagram.com" target="_blank" rel="noopener">INSTAGRAM</a>\
+        <a href="aziende">COLLABORAZIONI</a>\
         <a class="btn-pill" href="#footer">CONTATTACI</a>\
       </nav>\
       <button class="menu-toggle" id="menuToggle" aria-label="Apri menu" aria-expanded="false" aria-controls="mobileNav">\
@@ -22,10 +22,9 @@
       </button>\
     </div>\
     <nav class="mobile-nav" id="mobileNav" aria-label="Menu mobile" hidden>\
-      <a href="art-brut">ABOUT</a>\
+      <a href="art-brut">BRUT</a>\
       <a href="lavori">PROGETTI</a>\
-      <a href="aziende">CON LE AZIENDE</a>\
-      <a href="https://instagram.com" target="_blank" rel="noopener">INSTAGRAM</a>\
+      <a href="aziende">COLLABORAZIONI</a>\
       <a href="#footer">CONTATTACI</a>\
     </nav>\
   </header>';

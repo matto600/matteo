@@ -136,7 +136,7 @@ ul{list-style:none}
 
 /* Aziende: header + footer WHITE (page-specific) */
 body.footer-light .site-footer{padding-block:4.6rem 5.4rem}
-body.footer-light .footer-email{font-size:6.6rem;letter-spacing:.01em}
+body.footer-light .footer-email{font-size:3.6rem}
 body.footer-light .footer-info{font-size:1.3rem}
 body.footer-light .site-header{background:#fff}
 body.footer-light .site-footer{background:#fff}
@@ -171,10 +171,10 @@ body.footer-light .footer-logo{align-self:end}
 .note-maseimatto{width:18.75rem;margin:.4rem 0 1.1rem}
 .services-sec{padding-block:0 4rem;margin-top:-4.5rem}
 .services-sec > .container{padding-inline:10.7rem 3.4rem}
-.services-list{font-family:var(--f-display);font-weight:700;color:#d8cf1f;font-size:8rem;line-height:1.1;-webkit-text-stroke:1px #cbc11c;white-space:nowrap}
+.services-list{font-family:var(--f-display);font-weight:400;color:#d8cf1f;font-size:8rem;line-height:1.1;white-space:nowrap}
 .services-list li{text-transform:uppercase}
 .perche .subhead{margin-bottom:.5em;font-size:4.4rem;line-height:1.1}
-.yellow-list{color:#d8cf1f;font-weight:700;font-size:3.6rem;line-height:1.4;margin-top:.5em;-webkit-text-stroke:.5px #cbc11c}
+.yellow-list{color:#d8cf1f;font-weight:400;font-size:3.6rem;line-height:1.4;margin-top:.5em}
 
 /* ---------- Footer ---------- */
 .site-footer{background:var(--yellow);position:relative;padding-block:2.9rem 3.4rem;margin-top:0}
@@ -187,8 +187,8 @@ body.footer-light .footer-logo{align-self:end}
 .footer-left{display:flex;flex-direction:column;gap:1.6rem}
 .footer-ig img{width:2.875rem}
 .footer-center{align-self:center;text-align:center}
-.footer-email{font-family:var(--f-display);font-weight:700;color:var(--white);font-size:6.4rem;line-height:.95}
-.footer-dona{font-family:var(--f-display);font-weight:700;color:var(--ink);font-size:4.2rem;line-height:1;margin-top:.05em}
+.footer-email{font-family:var(--f-body);font-weight:700;color:var(--white);font-size:3.6rem;line-height:1.05;letter-spacing:-.01em}
+.footer-dona{font-family:"Anton",sans-serif;font-weight:400;color:var(--ink);font-size:4rem;line-height:1;margin-top:.15em}
 .footer-info{font-size:1.15rem;line-height:1.7;margin-top:.6rem}
 .footer-info .row{display:flex;align-items:center;gap:.5rem}
 .footer-info .row img{width:1rem}
@@ -247,7 +247,7 @@ body.footer-light .footer-logo{align-self:end}
   .brut-mark{width:min(45%,150px)}
 
   /* services list: wrap, no horizontal overflow */
-  .services-list{font-size:1.9rem;line-height:1.18;white-space:normal;-webkit-text-stroke:.6px #cbc11c}
+  .services-list{font-size:1.9rem;line-height:1.18;white-space:normal}
 
   .footer-grid{grid-template-columns:auto 1fr;gap:1.2rem 1.4rem}
   .footer-logo{grid-column:1 / -1}
@@ -302,8 +302,6 @@ html.lenis,html.lenis body{height:auto}
   .cosa .media-ink{margin-right:-7rem}
   .cosa .media-ink img{width:auto;max-height:44rem;margin-left:auto;display:block}
   .insieme .subhead{white-space:nowrap}
-  .insieme .linklist li:first-child a{color:#d8cf1f}
-  .list-plain li{font-weight:700}
   body.page-home .section{padding-block:4.7rem}
   body.page-home .chisiamo .lead{max-width:36rem}
 
