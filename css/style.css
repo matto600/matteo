@@ -132,7 +132,7 @@ ul{list-style:none}
 .bottom-yellow > .container{padding-inline:10.7rem}
 .az-photo{width:100%;display:block}
 .bottom-claim{display:block;margin:4rem auto 0;width:68rem;max-width:100%}
-.bottom-yellow::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2.6rem;background:radial-gradient(circle at 2.3rem 0, #fff 2.3rem, transparent 2.4rem);background-size:4.6rem 2.6rem;background-repeat:repeat-x;background-position:center bottom}
+.bottom-yellow::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2.8rem;background:radial-gradient(circle at 50% 100%, #fff 2.6rem, transparent 2.72rem);background-size:7rem 2.8rem;background-repeat:repeat-x;background-position:center bottom}
 
 /* Aziende: header + footer WHITE (page-specific) */
 body.footer-light .site-footer{padding-block:4.6rem 5.4rem}
