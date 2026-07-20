@@ -331,8 +331,9 @@ html.lenis,html.lenis body{height:auto}
   body.page-lavori .lead{max-width:44rem}
   body.page-lavori .heading{font-size:9rem;white-space:nowrap}
   body.page-lavori .section{padding-block:9rem}
+  body.page-lavori .showcase{padding-top:1.5rem}
   body.page-lavori .claim--center .claim__img{width:65rem}
-  body.page-lavori .falsificato-wrap{position:relative;z-index:2;margin-bottom:-5rem}
+  body.page-lavori .falsificato-wrap{position:relative;z-index:2;margin-top:-3rem;margin-bottom:-2rem}
   body.page-lavori .falsificato-wrap .note-falsificato{width:64rem;margin-top:2rem}
 
   /* ---- AZIENDE ---- */
