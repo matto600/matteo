@@ -115,8 +115,8 @@ ul{list-style:none}
 .bullet{width:1em;height:1em;border:none;border-radius:0;flex:0 0 auto;background:url("../assets/img/bullet_flower.png") center/contain no-repeat;align-self:center}
 .insieme .split--center{position:relative}
 .insieme__media{display:block}
-.insieme__media .peacock{width:100%;max-width:52rem;margin-left:auto;display:block}
-.insieme__media .note-esplosione{position:absolute;left:35%;top:37rem;width:42rem;margin:0;z-index:2}
+.insieme__media .peacock{width:100%;max-width:40rem;margin-inline:auto;display:block}
+.insieme__media .note-esplosione{display:block;width:30rem;max-width:100%;margin:1.5rem auto 0}
 
 /* ---------- claim ---------- */
 .claim--yellow{background:var(--yellow);position:relative;margin-top:2.1rem}
