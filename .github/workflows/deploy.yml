@@ -1,0 +1,58 @@
+name: Deploy sito BRUT (FTP)
+
+# Auto-deploy: a ogni push sul branch di lavoro (o su main) il sito viene
+# sincronizzato via FTP sull'hosting. Carica SOLO i file cambiati, quindi
+# niente piu' "Update" manuale su cPanel e niente errori ogni due deploy.
+# Si puo' anche lanciare a mano da GitHub -> Actions -> "Run workflow".
+
+on:
+  push:
+    branches:
+      - main
+      - claude/wizardly-maxwell-5e48ao
+  workflow_dispatch:
+
+concurrency:
+  # Se arrivano piu' push ravvicinati, tiene solo l'ultimo deploy.
+  group: ftp-deploy
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Sync via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ftp.devs4.it
+          username: brut@devs4.it
+          password: ${{ secrets.FTP_PASSWORD }}
+          # Directory sul server dove vive il sito.
+          # "./" = la home dell'account FTP (di solito gia' la web-root).
+          # Se il sito finisce in una sottocartella sbagliata, cambia qui in
+          # es. "/public_html/" oppure "/public_html/brut/".
+          server-dir: ./
+          protocol: ftps
+          # Non cancellare tutto: sincronizza in modo incrementale.
+          dangerous-clean-slate: false
+          # File di sviluppo che NON devono finire sul sito.
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/.github/**
+            **/node_modules/**
+            **/work/**
+            **/assets_src/**
+            **/tools/**
+            **/.claude/**
+            **/*.md
+            .cpanel.yml
+            shot.js
+            of.js
+            of2.js
+            package.json
+            package-lock.json
+            brut-site.zip
