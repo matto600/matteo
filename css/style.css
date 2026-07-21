@@ -354,14 +354,7 @@ html.lenis,html.lenis body{height:auto}
   body.page-artbrut .full-photo img{max-width:1442px}
   body.page-artbrut .section{padding-block:11rem}
 
-  /* ---- LAVORI: showcase full-bleed + overlaid labels ---- */
-  .showcase > .container{max-width:none;padding-inline:0}
-  .showcase__grid{grid-template-columns:1fr 1fr;gap:0;margin-top:0}
-  .product{position:relative;overflow:hidden}
-  .product img{width:100%;height:auto;display:block}
-  .showcase__label{position:absolute;text-transform:uppercase;font-size:6rem;margin:0;color:#ECE71D;-webkit-text-stroke:1px #cbc11c;z-index:2}
-  .product:nth-child(1) .showcase__label{top:.12em;left:.34em}
-  .product:nth-child(2) .showcase__label{bottom:.04em;right:.34em}
+  /* ---- LAVORI ---- */
   body.page-lavori .split--center{grid-template-columns:1fr .9fr;align-items:start}
   body.page-lavori .media-ink{margin-right:-10.7rem;margin-bottom:-9rem}
   body.page-lavori .media-ink img{width:auto;max-width:none;max-height:58rem;margin-left:auto}
