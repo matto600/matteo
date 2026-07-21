@@ -211,6 +211,43 @@ body.footer-light .footer-logo{align-self:end}
 .falsificato-wrap{padding-inline:10.7rem;margin-top:1rem}
 .falsificato-wrap .note-falsificato{width:46rem;margin:0}
 
+/* ---------- Photo carousel (product galleries) ---------- */
+.gallery-block{margin-top:2.5rem}
+.gallery-block + .gallery-block{margin-top:4rem}
+.gallery-label{font-family:var(--f-display);font-weight:400;color:#d8cf1f;font-size:5rem;line-height:1;text-transform:uppercase;margin-bottom:1.4rem}
+.carousel{position:relative}
+.carousel__track{display:flex;gap:1.2rem;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:.5rem;cursor:grab}
+.carousel__track::-webkit-scrollbar{display:none}
+.carousel__track.is-dragging{scroll-behavior:auto;scroll-snap-type:none;cursor:grabbing}
+.carousel__track img{height:32rem;width:auto;flex:0 0 auto;scroll-snap-align:start;object-fit:cover;display:block;user-select:none;-webkit-user-drag:none;background:#f2f2f0}
+.carousel__prev,.carousel__next{position:absolute;top:50%;transform:translateY(-50%);width:4rem;height:4rem;border-radius:50%;border:none;background:var(--ink);color:var(--white);font-size:2rem;line-height:1;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:2;opacity:.9;transition:opacity .2s}
+.carousel__prev:hover,.carousel__next:hover{opacity:1}
+.carousel__prev{left:-1.4rem}
+.carousel__next{right:-1.4rem}
+.carousel__prev:disabled,.carousel__next:disabled{opacity:0;pointer-events:none}
+
+/* ---------- Fading slideshow ---------- */
+.slideshow{position:relative}
+.slideshow__track{position:relative;width:100%;max-width:var(--page-max);margin-inline:auto}
+.slideshow__slide{position:absolute;inset:0;opacity:0;transition:opacity .8s ease;pointer-events:none}
+.slideshow__slide:first-child{position:relative}
+.slideshow__slide.is-active{opacity:1;pointer-events:auto}
+.slideshow__slide img{width:100%;height:100%;object-fit:cover;display:block}
+.slideshow__prev,.slideshow__next{position:absolute;top:50%;transform:translateY(-50%);width:4.4rem;height:4.4rem;border-radius:50%;border:none;background:rgba(35,31,32,.72);color:#fff;font-size:2.2rem;cursor:pointer;z-index:3;display:flex;align-items:center;justify-content:center}
+.slideshow__prev{left:2rem}.slideshow__next{right:2rem}
+.slideshow__dots{position:absolute;left:0;right:0;bottom:1.6rem;display:flex;gap:.6rem;justify-content:center;z-index:3}
+.slideshow__dot{width:.8rem;height:.8rem;border-radius:50%;border:none;background:rgba(255,255,255,.55);cursor:pointer;padding:0}
+.slideshow__dot.is-active{background:#fff}
+@media (max-width:1024px){
+  .gallery-label{font-size:2.4rem;margin-bottom:.8rem}
+  .carousel__track{gap:.7rem}
+  .carousel__track img{height:16rem}
+  .carousel__prev,.carousel__next{width:3rem;height:3rem;font-size:1.5rem}
+  .carousel__prev{left:.2rem}.carousel__next{right:.2rem}
+  .slideshow__prev,.slideshow__next{width:3.2rem;height:3.2rem;font-size:1.6rem}
+  .slideshow__prev{left:.6rem}.slideshow__next{right:.6rem}
+}
+
 /* ============================================================
    MOBILE / TABLET (≤1024px): layout fisso e stack, fuori dal
    sistema proporzionale desktop.
