@@ -226,6 +226,8 @@ body.footer-light .footer-logo{align-self:end}
 .carousel__next{right:-1.4rem}
 .carousel__prev:disabled,.carousel__next:disabled{opacity:0;pointer-events:none}
 
+.drawing-band img{width:100%;height:auto;display:block}
+body.page-artbrut .drawing-band{padding-block:1.5rem 7rem}
 /* ---------- Fading slideshow ---------- */
 .slideshow{position:relative}
 .slideshow__track{position:relative;width:100%;max-width:var(--page-max);margin-inline:auto;aspect-ratio:16/9;background:var(--ink)}
