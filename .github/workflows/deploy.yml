@@ -3,6 +3,8 @@ name: Deploy sito BRUT (FTP)
 # Auto-deploy: a ogni push sul branch di lavoro (o su main) il sito viene
 # sincronizzato via FTP sull'hosting. Carica SOLO i file cambiati, quindi
 # niente piu' "Update" manuale su cPanel e niente errori ogni due deploy.
+# Il passo FTP viene ritentato fino a 3 volte: l'FTP ogni tanto va in
+# timeout sul control socket, il retry rende il deploy affidabile.
 # Si puo' anche lanciare a mano da GitHub -> Actions -> "Run workflow".
 
 on:
@@ -24,21 +26,82 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Sync via FTP
+      # --- Tentativo 1 ---
+      - name: Sync via FTP (1)
+        id: ftp1
+        continue-on-error: true
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ftp.devs4.it
           username: brut@devs4.it
           password: ${{ secrets.FTP_PASSWORD }}
-          # Directory sul server dove vive il sito.
-          # "./" = la home dell'account FTP (di solito gia' la web-root).
-          # Se il sito finisce in una sottocartella sbagliata, cambia qui in
-          # es. "/public_html/" oppure "/public_html/brut/".
           server-dir: ./
           protocol: ftps
-          # Non cancellare tutto: sincronizza in modo incrementale.
+          timeout: 120000
           dangerous-clean-slate: false
-          # File di sviluppo che NON devono finire sul sito.
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/.github/**
+            **/node_modules/**
+            **/work/**
+            **/assets_src/**
+            **/tools/**
+            **/.claude/**
+            **/*.md
+            .cpanel.yml
+            shot.js
+            of.js
+            of2.js
+            package.json
+            package-lock.json
+            brut-site.zip
+
+      # --- Tentativo 2 (solo se il 1 fallisce) ---
+      - name: Sync via FTP (2)
+        id: ftp2
+        if: steps.ftp1.outcome == 'failure'
+        continue-on-error: true
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ftp.devs4.it
+          username: brut@devs4.it
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: ./
+          protocol: ftps
+          timeout: 120000
+          dangerous-clean-slate: false
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/.github/**
+            **/node_modules/**
+            **/work/**
+            **/assets_src/**
+            **/tools/**
+            **/.claude/**
+            **/*.md
+            .cpanel.yml
+            shot.js
+            of.js
+            of2.js
+            package.json
+            package-lock.json
+            brut-site.zip
+
+      # --- Tentativo 3 (solo se anche il 2 fallisce): questo fa fallire
+      #     il job se non riesce, cosi' vedi lo stato rosso. ---
+      - name: Sync via FTP (3)
+        if: steps.ftp1.outcome == 'failure' && steps.ftp2.outcome == 'failure'
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ftp.devs4.it
+          username: brut@devs4.it
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: ./
+          protocol: ftps
+          timeout: 120000
+          dangerous-clean-slate: false
           exclude: |
             **/.git*
             **/.git*/**
