@@ -120,7 +120,7 @@ ul{list-style:none}
 .insieme .split--center{grid-template-columns:1fr 1fr}
 .insieme__media{display:block;margin-right:-10.7rem}
 .insieme__media .peacock{width:100%;max-width:none;margin:0 0 0 auto;display:block}
-.insieme__media .note-esplosione{display:block;width:26rem;max-width:60%;margin:1.5rem 6rem 0 auto}
+.insieme__media .note-esplosione{display:block;width:40rem;max-width:90%;margin:1.5rem 9rem 0 auto}
 
 /* ---------- claim ---------- */
 .claim--yellow{background:var(--yellow);position:relative;margin-top:2.1rem}
