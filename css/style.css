@@ -358,6 +358,7 @@ html.lenis,html.lenis body{height:auto}
   /* ---- LAVORI ---- */
   body.page-lavori .split--center{grid-template-columns:1fr .9fr;align-items:start}
   body.page-lavori .media-ink{margin-right:-10.7rem;margin-bottom:-9rem}
+  body.page-lavori .split--center{overflow-x:clip}
   body.page-lavori .media-ink img{width:auto;max-width:none;max-height:58rem;margin-left:auto}
   body.page-lavori .lead{max-width:44rem}
   body.page-lavori .heading{font-size:9rem;white-space:nowrap}
