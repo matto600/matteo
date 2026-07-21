@@ -37,18 +37,24 @@ jobs:
       CPANEL_HOST: ${{ secrets.CPANEL_HOST }}
       CPANEL_USER: ${{ secrets.CPANEL_USER }}
       CPANEL_TOKEN: ${{ secrets.CPANEL_TOKEN }}
+      CPANEL_PASSWORD: ${{ secrets.CPANEL_PASSWORD }}
       CPANEL_REPO_ROOT: ${{ secrets.CPANEL_REPO_ROOT }}
       BRANCH: ${{ github.ref_name }}
     steps:
       - name: Trigger git pull sul server (cPanel API, 3 tentativi)
         run: |
-          if [ -z "$CPANEL_HOST" ] || [ -z "$CPANEL_USER" ] || [ -z "$CPANEL_TOKEN" ]; then
-            echo "::warning::Secrets cPanel mancanti (CPANEL_HOST / CPANEL_USER / CPANEL_TOKEN)."
-            echo "::warning::Crea un API token su cPanel (Security -> Manage API Tokens) e aggiungi i 3 secrets. Deploy saltato."
+          if [ -z "$CPANEL_HOST" ] || [ -z "$CPANEL_USER" ] || { [ -z "$CPANEL_TOKEN" ] && [ -z "$CPANEL_PASSWORD" ]; }; then
+            echo "::warning::Secrets cPanel mancanti. Servono CPANEL_HOST, CPANEL_USER e CPANEL_TOKEN oppure CPANEL_PASSWORD."
+            echo "::warning::Aggiungili in GitHub -> Settings -> Secrets and variables -> Actions. Deploy saltato."
             exit 0
           fi
 
-          AUTH="Authorization: cpanel ${CPANEL_USER}:${CPANEL_TOKEN}"
+          # Autenticazione: API token se presente, altrimenti password cPanel (Basic)
+          if [ -n "$CPANEL_TOKEN" ]; then
+            AUTH="Authorization: cpanel ${CPANEL_USER}:${CPANEL_TOKEN}"
+          else
+            AUTH="Authorization: Basic $(printf '%s' "${CPANEL_USER}:${CPANEL_PASSWORD}" | base64 -w0)"
+          fi
           BASE="https://${CPANEL_HOST}:2083/execute"
 
           # Trova il repository sul server (se non indicato via secret)
