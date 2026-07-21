@@ -15,17 +15,28 @@ Options -Indexes +FollowSymLinks
   RewriteRule ^(.+?)/?$ $1.html [L]
 </IfModule>
 
-# Long cache for static assets
+# Cache policy
+#  - HTML/CSS/JS: sempre rivalidati (no-cache) cosi' ogni aggiornamento del
+#    sito si vede SUBITO, senza dover fare hard-refresh. La rivalidazione usa
+#    l'ETag: se il file non e' cambiato il server risponde 304 (leggerissimo).
+#  - Immagini/font: cache lunga (le immagini vengono versionate nel nome file
+#    quando cambiano, es. home_peacock_v2.png, quindi mai stantie).
 <IfModule mod_expires.c>
   ExpiresActive On
   ExpiresByType image/png      "access plus 1 month"
   ExpiresByType image/jpeg     "access plus 1 month"
   ExpiresByType image/svg+xml  "access plus 1 month"
   ExpiresByType image/x-icon   "access plus 1 month"
-  ExpiresByType text/css       "access plus 1 week"
-  ExpiresByType application/javascript "access plus 1 week"
   ExpiresByType font/ttf       "access plus 1 year"
   ExpiresByType font/otf       "access plus 1 year"
+</IfModule>
+<IfModule mod_headers.c>
+  <FilesMatch "\.(html|css|js)$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+  <FilesMatch "\.(png|jpe?g|svg|ico|gif|webp|woff2?|ttf|otf)$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
 </IfModule>
 
 ErrorDocument 404 /index.html
