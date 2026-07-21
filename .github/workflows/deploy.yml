@@ -1,11 +1,23 @@
-name: Deploy sito BRUT (FTP)
+name: Deploy sito BRUT
 
-# Auto-deploy: a ogni push sul branch di lavoro (o su main) il sito viene
-# sincronizzato via FTP sull'hosting. Carica SOLO i file cambiati, quindi
-# niente piu' "Update" manuale su cPanel e niente errori ogni due deploy.
-# Il passo FTP viene ritentato fino a 3 volte: l'FTP ogni tanto va in
-# timeout sul control socket, il retry rende il deploy affidabile.
-# Si puo' anche lanciare a mano da GitHub -> Actions -> "Run workflow".
+# NIENTE PIU' FTP. L'FTP dell'hosting rifiuta/tronca le connessioni dai
+# runner di GitHub (timeout control socket) -> metodo abbandonato.
+#
+# Nuovo metodo (lo stesso degli altri progetti collegati a git):
+# il SERVER stesso fa "git pull" dal repository, come quando premi
+# "Update from Remote" su cPanel, ma in automatico a ogni push e con
+# 3 tentativi. La chiamata usa l'API ufficiale di cPanel via HTTPS
+# (porta 2083): una singola richiesta leggera, nessun trasferimento
+# file da GitHub verso l'hosting.
+#
+# Setup una-tantum (poi mai piu'):
+#   1. cPanel -> Security -> Manage API Tokens -> Create Token
+#   2. GitHub -> Settings -> Secrets and variables -> Actions:
+#        CPANEL_HOST  = host del cPanel (es. devs4.it)
+#        CPANEL_USER  = utente cPanel
+#        CPANEL_TOKEN = il token creato al punto 1
+#   (opzionale) CPANEL_REPO_ROOT = percorso del repo sul server, solo se
+#   ci sono piu' repository git nel cPanel e va scelto quello giusto.
 
 on:
   push:
@@ -15,107 +27,61 @@ on:
   workflow_dispatch:
 
 concurrency:
-  # Se arrivano piu' push ravvicinati, tiene solo l'ultimo deploy.
-  group: ftp-deploy
+  group: cpanel-deploy
   cancel-in-progress: true
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    env:
+      CPANEL_HOST: ${{ secrets.CPANEL_HOST }}
+      CPANEL_USER: ${{ secrets.CPANEL_USER }}
+      CPANEL_TOKEN: ${{ secrets.CPANEL_TOKEN }}
+      CPANEL_REPO_ROOT: ${{ secrets.CPANEL_REPO_ROOT }}
+      BRANCH: ${{ github.ref_name }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - name: Trigger git pull sul server (cPanel API, 3 tentativi)
+        run: |
+          if [ -z "$CPANEL_HOST" ] || [ -z "$CPANEL_USER" ] || [ -z "$CPANEL_TOKEN" ]; then
+            echo "::warning::Secrets cPanel mancanti (CPANEL_HOST / CPANEL_USER / CPANEL_TOKEN)."
+            echo "::warning::Crea un API token su cPanel (Security -> Manage API Tokens) e aggiungi i 3 secrets. Deploy saltato."
+            exit 0
+          fi
 
-      # --- Tentativo 1 ---
-      - name: Sync via FTP (1)
-        id: ftp1
-        continue-on-error: true
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ftp.devs4.it
-          username: brut@devs4.it
-          password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: ./
-          protocol: ftps
-          timeout: 120000
-          dangerous-clean-slate: false
-          exclude: |
-            **/.git*
-            **/.git*/**
-            **/.github/**
-            **/node_modules/**
-            **/work/**
-            **/assets_src/**
-            **/tools/**
-            **/.claude/**
-            **/*.md
-            .cpanel.yml
-            shot.js
-            of.js
-            of2.js
-            package.json
-            package-lock.json
-            brut-site.zip
+          AUTH="Authorization: cpanel ${CPANEL_USER}:${CPANEL_TOKEN}"
+          BASE="https://${CPANEL_HOST}:2083/execute"
 
-      # --- Tentativo 2 (solo se il 1 fallisce) ---
-      - name: Sync via FTP (2)
-        id: ftp2
-        if: steps.ftp1.outcome == 'failure'
-        continue-on-error: true
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ftp.devs4.it
-          username: brut@devs4.it
-          password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: ./
-          protocol: ftps
-          timeout: 120000
-          dangerous-clean-slate: false
-          exclude: |
-            **/.git*
-            **/.git*/**
-            **/.github/**
-            **/node_modules/**
-            **/work/**
-            **/assets_src/**
-            **/tools/**
-            **/.claude/**
-            **/*.md
-            .cpanel.yml
-            shot.js
-            of.js
-            of2.js
-            package.json
-            package-lock.json
-            brut-site.zip
+          # Trova il repository sul server (se non indicato via secret)
+          ROOT="$CPANEL_REPO_ROOT"
+          if [ -z "$ROOT" ]; then
+            LIST=$(curl -sS -m 60 -H "$AUTH" "$BASE/VersionControl/retrieve?fields=name,repository_root,branch" || true)
+            echo "Repository trovati: $(echo "$LIST" | jq -c '[.data[]?.repository_root]' 2>/dev/null || echo 'risposta non valida')"
+            ROOT=$(echo "$LIST" | jq -r '.data[0].repository_root // empty' 2>/dev/null)
+          fi
+          if [ -z "$ROOT" ]; then
+            echo "::error::Impossibile individuare il repository sul server. Imposta il secret CPANEL_REPO_ROOT."
+            exit 1
+          fi
+          echo "Repo sul server: $ROOT — branch: $BRANCH"
 
-      # --- Tentativo 3 (solo se anche il 2 fallisce): questo fa fallire
-      #     il job se non riesce, cosi' vedi lo stato rosso. ---
-      - name: Sync via FTP (3)
-        if: steps.ftp1.outcome == 'failure' && steps.ftp2.outcome == 'failure'
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ftp.devs4.it
-          username: brut@devs4.it
-          password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: ./
-          protocol: ftps
-          timeout: 120000
-          dangerous-clean-slate: false
-          exclude: |
-            **/.git*
-            **/.git*/**
-            **/.github/**
-            **/node_modules/**
-            **/work/**
-            **/assets_src/**
-            **/tools/**
-            **/.claude/**
-            **/*.md
-            .cpanel.yml
-            shot.js
-            of.js
-            of2.js
-            package.json
-            package-lock.json
-            brut-site.zip
+          for i in 1 2 3; do
+            echo "--- Tentativo $i ---"
+            RES=$(curl -sS -m 120 -G -H "$AUTH" \
+                   --data-urlencode "repository_root=$ROOT" \
+                   --data-urlencode "branch=$BRANCH" \
+                   "$BASE/VersionControl/update" || true)
+            OK=$(echo "$RES" | jq -r '.status // 0' 2>/dev/null)
+            if [ "$OK" = "1" ]; then
+              echo "Pull completato: $(echo "$RES" | jq -c '.data.last_update // .data' 2>/dev/null)"
+              # Se esiste .cpanel.yml lancia anche il deploy (innocuo se ridondante)
+              curl -sS -m 120 -G -H "$AUTH" \
+                   --data-urlencode "repository_root=$ROOT" \
+                   "$BASE/VersionControl/Deploy/create" >/dev/null 2>&1 || true
+              echo "✅ Sito aggiornato."
+              exit 0
+            fi
+            echo "Errore dal server: $(echo "$RES" | jq -c '.errors // .' 2>/dev/null | head -c 500)"
+            [ $i -lt 3 ] && sleep 20
+          done
+          echo "::error::Update fallito dopo 3 tentativi."
+          exit 1
