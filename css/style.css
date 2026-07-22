@@ -27,7 +27,7 @@
 html{
   /* proporzionale tra ~1440 e 1920, poi bloccato: il design "congela" a 1920
      e su schermi più grandi resta crisp e centrato (vedi --page-max). */
-  font-size:clamp(12px, calc(100vw / 120), 16px);
+  font-size:clamp(8.6px, calc(100vw / 120), 16px);
   scroll-behavior:smooth;
   -webkit-text-size-adjust:100%;
   background:#fff;
@@ -175,7 +175,7 @@ body.footer-light .footer-logo{align-self:end}
 
 /* ---------- Aziende lists ---------- */
 .note-maseimatto{width:18.75rem;margin:.4rem 0 1.1rem}
-.services-sec{padding-block:0 4rem;margin-top:-16.5rem}
+.services-sec{padding-block:0 4rem;margin-top:-11.5rem}
 .services-sec > .container{padding-inline:10.7rem 3.4rem}
 .services-list{font-family:var(--f-display);font-weight:400;color:#d8cf1f;font-size:8rem;line-height:1.1;white-space:nowrap}
 .services-list li{text-transform:uppercase}
@@ -427,6 +427,10 @@ html.lenis,html.lenis body{height:auto}
   .perche .cta-line .link-u{font-size:3.6rem;font-family:Arial,Helvetica,sans-serif;font-weight:400;text-transform:none;letter-spacing:normal}
   .perche .cta-line .arrow{width:14rem}
   body.footer-light .services-list{line-height:1;font-size:8.9rem}
+  body.footer-light .perche{padding-top:5.7rem}
+  body.footer-light .perche .subhead{margin-bottom:.14em}
+  body.footer-light .perche .yellow-list{margin-top:.02em}
+  body.footer-light .perche .cta-line{margin-top:.1em}
   /* frammenti manoscritti che sbordano dal margine sinistro (dal mockup) */
   .frag-margin{position:absolute;left:0;display:block}
   .frag-to{top:38.25rem;width:6.55rem}
