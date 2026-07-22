@@ -365,7 +365,7 @@ html.lenis,html.lenis body{height:auto}
   .insieme__media{margin-left:-1rem}
   .insieme__media .peacock{width:100%;margin-top:-2.5rem;margin-bottom:-14rem}
   .insieme__media .note-esplosione{position:absolute;left:45.4rem;top:35.4rem;width:43.3rem;margin:0;z-index:2}
-  body.page-home .claim--center{margin-top:-9.1rem;padding-bottom:0}
+  body.page-home .claim--center{margin-top:-9.1rem;padding-bottom:3.9rem}
   body.page-home .claim--center .claim__img{width:65.5rem}
 
   /* ---- FOOTER (scala dal mockup) ---- */
@@ -418,7 +418,7 @@ html.lenis,html.lenis body{height:auto}
   body.page-lavori .section{padding-block:9rem}
   body.page-lavori .showcase{padding-top:1.5rem}
   body.page-lavori .claim--center .claim__img{width:68rem}
-  body.page-lavori .claim{padding-block:4rem 2rem}
+  body.page-lavori .claim{padding-block:4rem 4.4rem}
   body.page-lavori .falsificato-wrap{position:relative;z-index:2;margin-top:-3rem;margin-bottom:-2rem}
   body.page-lavori .falsificato-wrap .note-falsificato{width:67.5rem;margin-top:2rem}
 
