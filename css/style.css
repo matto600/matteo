@@ -185,11 +185,13 @@ body.footer-light .footer-logo{align-self:end}
 /* ---------- Footer ---------- */
 .site-footer{background:var(--yellow);position:relative;padding-block:2.9rem 3.4rem;margin-top:0}
 .site-footer::before{
-  content:"";position:absolute;top:-1.8rem;left:0;right:0;height:2.1rem;
-  background:radial-gradient(circle at 1.9rem 2.1rem, var(--yellow) 1.9rem, transparent 2rem);
-  background-size:3.75rem 2.1rem;background-repeat:repeat-x;background-position:center top;
+  content:"";position:absolute;top:-3.4rem;left:0;right:0;height:3.9rem;
+  background:radial-gradient(circle at 3.2rem 3.9rem, var(--yellow) 3.2rem, transparent 3.3rem);
+  background-size:6.4rem 3.9rem;background-repeat:repeat-x;background-position:center top;
 }
-.footer-grid{display:grid;grid-template-columns:auto 1fr auto;gap:3.75rem;align-items:stretch}
+.footer-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:3.75rem;align-items:stretch}
+.footer-left{justify-self:start}
+.footer-logo{justify-self:end}
 .footer-left{display:flex;flex-direction:column;gap:1.6rem}
 .footer-ig img{width:2.875rem}
 .footer-center{align-self:center;text-align:center}
@@ -375,17 +377,31 @@ html.lenis,html.lenis body{height:auto}
   .footer-ig img{width:4.4rem}
   .footer-logo img{width:13.75rem}
 
-  /* ---- ART BRUT ---- */
+  /* ---- ART BRUT (misure dal mockup cliente, scala 1920) ---- */
   .giraffe-media{margin-left:-10.7rem}
   .giraffe-media img{max-width:none;width:54rem;margin-right:auto}
-  .brut-mark{width:15rem;display:block;margin-bottom:1rem}
-  .outsider .media-ink{margin-right:-6rem;overflow:visible}
-  .outsider .media-ink img{width:auto;max-height:62rem;margin-left:auto}
-  .brut-mark{width:21rem}
-  .note-infotac{width:30rem;margin-bottom:-1rem;margin-left:8rem}
-  .note-falsificato{width:54rem;margin-left:-10rem}
+  body.page-artbrut .section > .split--center{grid-template-columns:40.9rem 1fr}
+  body.page-artbrut .lead{font-size:2.8rem;line-height:1.21;max-width:56.3rem}
+  .brut-mark{width:27rem;display:block;margin-bottom:1rem}
+  .outsider__row{display:block;position:relative}
+  .vert-milano{position:absolute;left:1.9rem;top:14.5rem;width:6.9rem}
+  .outsider .split--center > div:first-child{position:relative}
+  .note-infotac{position:absolute;left:28rem;top:7rem;width:40rem;margin:0}
+  .outsider .media-ink{margin-right:-7.4rem;overflow:visible}
+  .outsider .media-ink img{width:auto;max-height:58rem;margin-left:auto}
+  .note-falsificato{width:69.5rem;max-width:none;margin-left:-23.3rem}
+  body.page-artbrut .link-u{font-size:3.4rem}
+  body.page-artbrut .outsider .split--center{grid-template-columns:64.6rem 1fr}
+  body.page-artbrut .cta-line{flex-wrap:nowrap;gap:2.5rem}
+  body.page-artbrut .cta-line .arrow{width:11rem}
+  body.page-artbrut .slideshow{max-width:1442px;margin-inline:auto}
   body.page-artbrut .full-photo img{max-width:1442px}
-  body.page-artbrut .section{padding-block:11rem}
+  body.page-artbrut .claim--center .claim__img{width:80rem}
+  body.page-artbrut .section{padding-block:5rem 2rem}
+  body.page-artbrut .outsider{padding-block:1rem 7rem}
+  body.page-artbrut .outsider .lead{max-width:64.6rem}
+  body.page-artbrut .drawing-band{padding-block:0 10.1rem}
+  body.page-artbrut .claim{padding-block:4.375rem 4.8rem}
 
   /* ---- LAVORI ---- */
   body.page-lavori .split--center{grid-template-columns:1fr .9fr;align-items:start}
