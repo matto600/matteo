@@ -105,6 +105,22 @@ ul{list-style:none}
 
 body.page-home .cosa{background:var(--yellow)}
 
+/* ---------- Atelier ---------- */
+.atelier-hero img{width:98.6%;margin:2rem 0 0;margin-inline:0}
+.atelier-points{margin-top:1.4em}
+.atelier-points li{display:flex;gap:1.3rem;margin-bottom:1.5em;align-items:flex-start}
+.pt-flower{width:3.4rem;flex:0 0 auto;margin-top:.1rem}
+.atelier-points h3{font-family:var(--f-display);font-weight:400;color:#d8cf1f;font-size:2rem;line-height:1;text-transform:uppercase}
+.atelier-points p{margin-top:.4em;max-width:38rem}
+.atelier-cta{position:relative;text-align:center}
+.entra-btn{display:inline-block;position:relative}
+.entra-txt{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--f-head);font-weight:400;color:#fff;text-transform:uppercase;font-size:2.1rem;line-height:1;letter-spacing:.01em}
+.entra-btn img{width:55.2rem;max-width:80%}
+.cta-animal{position:absolute}
+.cta-animal--sx{left:0;top:4.4rem;width:29.2rem}
+.cta-animal--dx{right:-11rem;top:6rem;width:37rem}
+.tumtum{display:block;width:47.6rem;max-width:70%;margin:6.1rem auto 0;transform:translateX(-1.8rem)}
+
 /* ---------- black art band ---------- */
 .artband{background:var(--ink);line-height:0}
 .artband img{width:100%;max-width:var(--page-max);margin-inline:auto}
@@ -310,6 +326,12 @@ body.page-artbrut .drawing-band{padding-block:1.5rem 7rem}
   .claim__img,.claim--center .claim__img,body.page-lavori .claim--center .claim__img{width:100%}
   .vert-milano{display:none}
   .frag-margin{display:none}
+  .footer-center{position:static;left:auto;top:auto;transform:none}
+  .atelier-points p br{display:none}
+  .cta-animal{position:static;width:38%;display:inline-block;vertical-align:bottom;margin:0 2%}
+  .entra-btn img{max-width:92%}
+  .atelier-insieme__media{margin-left:0}
+  .atelier-insieme__media img{width:100%}
 }
 @media (max-width:560px){
   .heading{font-size:2.35rem}
@@ -367,6 +389,28 @@ html.lenis,html.lenis body{height:auto}
   .insieme__media .note-esplosione{position:absolute;left:45.4rem;top:35.4rem;width:43.3rem;margin:0;z-index:2}
   body.page-home .claim--center{margin-top:-9.1rem;padding-bottom:3.9rem}
   body.page-home .claim--center .claim__img{width:65.5rem}
+
+  /* ---- ATELIER (misure dal mockup cliente, scala 1920) ---- */
+  body.page-atelier .section > .container{padding-inline:10.1rem}
+  .atelier-hero img{margin-top:3.9rem}
+  body.page-atelier .atelier-intro{padding-block:2rem 5.8rem}
+  body.page-atelier .atelier-intro .heading{font-size:8.1rem}
+  body.page-atelier .atelier-intro .lead{font-size:2.5rem;line-height:1.22;max-width:84rem;margin-top:5.8rem}
+  body.page-atelier .atelier-insieme{padding-block:0}
+  body.page-atelier .atelier-insieme .split--center{grid-template-columns:39rem 1fr;gap:4.375rem;align-items:start}
+  .atelier-insieme__media{margin-left:-10.1rem}
+  .atelier-insieme__media img{width:53rem;max-width:none}
+  body.page-atelier .atelier-insieme .heading{font-size:8.15rem;white-space:nowrap;margin-top:3.6rem}
+  body.page-atelier .atelier-points{margin-top:7.75rem}
+  body.page-atelier .atelier-points h3{font-size:4.6rem}
+  body.page-atelier .atelier-points li{margin-bottom:3.9rem;gap:1.9rem}
+  body.page-atelier .atelier-points p{font-size:1.85rem;line-height:1.35;max-width:none;margin-left:2.6rem}
+  body.page-atelier .atelier-cta{padding-block:14.4rem 2.4rem;overflow-x:clip}
+  body.page-atelier .entra-btn img{max-width:none}
+  .entra-txt{font-size:6rem}
+  body.page-atelier .full-photo img{width:100%;max-width:none}
+  body.page-atelier .claim{padding-block:5rem 3.7rem}
+  body.page-atelier .claim--center .claim__img{width:65.5rem}
 
   /* ---- FOOTER (scala dal mockup) ---- */
   .site-footer{padding-block:4.5rem}
