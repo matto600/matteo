@@ -56,20 +56,30 @@ jobs:
                 _deploy/
           echo "File pronti:"; find _deploy -type f | wc -l
 
-      - name: Carica via FTP (lftp mirror, 4 tentativi)
+      - name: Carica via FTP (lftp mirror, connessione singola)
         if: env.OK == '1'
         run: |
           set -e
-          CMD="set net:timeout 20; set net:max-retries 3; set net:reconnect-interval-base 5;
-               set net:persist-retries 3; set ftp:ssl-allow no; set mirror:parallel-transfer-count 3;"
-          for i in 1 2 3 4; do
+          # UNA sola connessione: Tophost limita le connessioni FTP concorrenti.
+          # Niente parallelismo, passive mode, retry morbidi sul singolo socket.
+          CMD="set net:timeout 30;
+               set net:max-retries 5;
+               set net:reconnect-interval-base 8;
+               set net:reconnect-interval-max 30;
+               set net:connection-limit 1;
+               set ftp:ssl-allow no;
+               set ftp:use-feat no;
+               set mirror:parallel-transfer-count 1;
+               set mirror:use-pget-n 1;"
+          for i in 1 2 3 4 5; do
             echo "--- Tentativo $i ---"
             if lftp -u "$FTP_USER","$FTP_PASSWORD" "$FTP_HOST" -e \
                  "$CMD mirror -R --verbose --ignore-time --no-perms _deploy $REMOTE_DIR; bye"; then
               echo "✅ Sito pubblicato su https://www.brut.milano.it/"
               exit 0
             fi
-            echo "tentativo $i fallito"; sleep $((i*15))
+            echo "tentativo $i fallito (attesa per far scadere eventuali connessioni zombie)"
+            sleep $((i*30))
           done
-          echo "::error::Pubblicazione FTP fallita dopo 4 tentativi."
+          echo "::error::Pubblicazione FTP fallita dopo 5 tentativi."
           exit 1
