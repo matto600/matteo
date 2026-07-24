@@ -10,3 +10,7 @@ assets_src/
 brut-site.zip
 shot_fold.js
 probe*.js
+
+# artefatti di pubblicazione (build locale)
+_deploy/
+brut-produzione.zip
