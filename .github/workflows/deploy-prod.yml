@@ -12,11 +12,10 @@ name: Pubblica su produzione (brut.milano.it)
 # Host/utente/cartella sono pubblici (non segreti) e stanno qui sotto.
 
 on:
+  # Solo avvio manuale: l'FTP di Tophost e' inaffidabile e la produzione
+  # (20MB) si aggiorna caricando lo ZIP dal File Manager. Niente auto-run
+  # a ogni push, cosi' non compaiono X rosse.
   workflow_dispatch:
-  push:
-    branches:
-      - claude/wizardly-maxwell-5e48ao
-      - main
 
 concurrency:
   group: prod-deploy
