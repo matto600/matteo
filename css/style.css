@@ -336,6 +336,10 @@ body.page-artbrut .drawing-band{padding-block:1.5rem 7rem}
   .perche .cta-line .arrow{display:none}
   .tumtum{transform:none;margin:2rem auto 0}
   .atelier-cta{padding-block:1.5rem 2rem}
+  /* smerli a misura mobile (le misure rem del desktop erano enormi a 16px) */
+  .site-footer::before{height:16px;top:-14px;background-size:34px 16px;background-image:radial-gradient(circle at 17px 16px, var(--yellow) 15px, transparent 16px)}
+  .bottom-yellow::after{height:16px;background-size:34px 16px;background-image:radial-gradient(circle at 50% 100%, #fff 15px, transparent 16px)}
+  body.footer-light .bottom-yellow{padding-block:2.5rem 3.5rem}
   .cta-animal{position:static;width:38%;display:inline-block;vertical-align:bottom;margin:0 2%}
   .entra-btn img{max-width:92%}
   .atelier-insieme__media{margin-left:0}
