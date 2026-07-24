@@ -75,7 +75,7 @@ ul{list-style:none}
 .mobile-nav a{font-family:var(--f-nav);font-weight:400;text-transform:uppercase;font-size:1.5rem;padding:.5rem 0;border-bottom:1px solid rgba(236,231,29,.25)}
 
 /* ---------- Hero (composed image) ---------- */
-.hero--home{background:var(--yellow)}
+.hero--home{background:#fff}
 .hero--aziende{background:linear-gradient(to bottom,var(--yellow) 0 58%,#fff 58% 100%)}
 .hero__art img{width:100%;max-width:var(--page-max);margin-inline:auto;display:block}
 .hero-banner img{width:100%;max-width:var(--page-max);margin-inline:auto;display:block}
@@ -328,6 +328,14 @@ body.page-artbrut .drawing-band{padding-block:1.5rem 7rem}
   .frag-margin{display:none}
   .footer-center{position:static;left:auto;top:auto;transform:none}
   .atelier-points p br{display:none}
+  /* fix mobile da screenshot cliente */
+  .insieme .split--center{grid-template-columns:1fr}
+  .services-sec{margin-top:0}
+  body.footer-light .bottom-yellow{padding-block:2.5rem 9rem}
+  .bottom-claim{margin:3rem auto 0}
+  .perche .cta-line .arrow{display:none}
+  .tumtum{transform:none;margin:2rem auto 0}
+  .atelier-cta{padding-block:1.5rem 2rem}
   .cta-animal{position:static;width:38%;display:inline-block;vertical-align:bottom;margin:0 2%}
   .entra-btn img{max-width:92%}
   .atelier-insieme__media{margin-left:0}
