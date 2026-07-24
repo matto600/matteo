@@ -1,0 +1,75 @@
+name: Pubblica su produzione (brut.milano.it)
+
+# Pubblica il sito sull'hosting di PRODUZIONE (Tophost/Seeweb) via FTP.
+# Si lancia a mano da GitHub -> Actions -> "Pubblica su produzione" ->
+# Run workflow. (Parte anche a ogni push su questo branch, ma salta senza
+# fallire se manca il secret.)
+#
+# Setup una-tantum:
+#   GitHub -> Settings -> Secrets and variables -> Actions -> New secret
+#     FTP_PROD_PASSWORD = (la password FTP di brut.milano.it)
+#
+# Host/utente/cartella sono pubblici (non segreti) e stanno qui sotto.
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - claude/wizardly-maxwell-5e48ao
+      - main
+
+concurrency:
+  group: prod-deploy
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      FTP_HOST: ftp.brut.milano.it
+      FTP_USER: brut.milano.it
+      FTP_PASSWORD: ${{ secrets.FTP_PROD_PASSWORD }}
+      REMOTE_DIR: /htdocs
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Controlla il secret
+        run: |
+          if [ -z "$FTP_PASSWORD" ]; then
+            echo "::warning::Manca il secret FTP_PROD_PASSWORD. Aggiungilo in Settings -> Secrets -> Actions. Pubblicazione saltata."
+            exit 0
+          fi
+          echo "OK=1" >> "$GITHUB_ENV"
+
+      - name: Installa lftp
+        if: env.OK == '1'
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq lftp
+
+      - name: Prepara i file del sito
+        if: env.OK == '1'
+        run: |
+          rm -rf _deploy && mkdir _deploy
+          cp -R index.html art-brut.html lavori.html aziende.html atelier.html \
+                css js assets .htaccess \
+                favicon.ico favicon-16.png favicon-32.png favicon-512.png apple-touch-icon.png \
+                _deploy/
+          echo "File pronti:"; find _deploy -type f | wc -l
+
+      - name: Carica via FTP (lftp mirror, 4 tentativi)
+        if: env.OK == '1'
+        run: |
+          set -e
+          CMD="set net:timeout 20; set net:max-retries 3; set net:reconnect-interval-base 5;
+               set net:persist-retries 3; set ftp:ssl-allow no; set mirror:parallel-transfer-count 3;"
+          for i in 1 2 3 4; do
+            echo "--- Tentativo $i ---"
+            if lftp -u "$FTP_USER","$FTP_PASSWORD" "$FTP_HOST" -e \
+                 "$CMD mirror -R --verbose --ignore-time --no-perms _deploy $REMOTE_DIR; bye"; then
+              echo "✅ Sito pubblicato su https://www.brut.milano.it/"
+              exit 0
+            fi
+            echo "tentativo $i fallito"; sleep $((i*15))
+          done
+          echo "::error::Pubblicazione FTP fallita dopo 4 tentativi."
+          exit 1
