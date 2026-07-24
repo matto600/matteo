@@ -1,5 +1,9 @@
-# ── BRUT — Apache/cPanel config ─────────────────────────────
-Options -Indexes +FollowSymLinks
+# ── BRUT — Apache config (compatibile hosting condiviso) ────
+# Options in IfModule-guard: alcuni host vietano +FollowSymLinks in .htaccess
+# (causa errore 500). Usiamo SymLinksIfOwnerMatch che e' accettato ovunque.
+<IfModule mod_autoindex.c>
+  Options -Indexes
+</IfModule>
 
 # Clean URLs: no .html extension
 <IfModule mod_rewrite.c>
@@ -17,10 +21,8 @@ Options -Indexes +FollowSymLinks
 
 # Cache policy
 #  - HTML/CSS/JS: sempre rivalidati (no-cache) cosi' ogni aggiornamento del
-#    sito si vede SUBITO, senza dover fare hard-refresh. La rivalidazione usa
-#    l'ETag: se il file non e' cambiato il server risponde 304 (leggerissimo).
-#  - Immagini/font: cache lunga (le immagini vengono versionate nel nome file
-#    quando cambiano, es. home_peacock_v2.png, quindi mai stantie).
+#    sito si vede SUBITO, senza dover fare hard-refresh.
+#  - Immagini/font: cache lunga (versionate nel nome file quando cambiano).
 <IfModule mod_expires.c>
   ExpiresActive On
   ExpiresByType image/png      "access plus 1 month"
@@ -41,9 +43,16 @@ Options -Indexes +FollowSymLinks
 
 ErrorDocument 404 /index.html
 
-# ── Block dev / meta files (when repo root is the web root) ──
+# ── Block dev / meta files ──
 RedirectMatch 404 ^/\.git
 RedirectMatch 404 ^/(\.claude|tools|assets_src|node_modules)(/|$)
-<FilesMatch "(^\.|\.(yml|md|gitignore|json|lock)$)">
-  Require all denied
+# Nega file nascosti/meta con sintassi compatibile Apache 2.2 e 2.4
+<FilesMatch "(^\.ht|\.(yml|md|gitignore|json|lock)$)">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+  </IfModule>
 </FilesMatch>
