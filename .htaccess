@@ -1,58 +1,25 @@
-# ── BRUT — Apache config (compatibile hosting condiviso) ────
-# Options in IfModule-guard: alcuni host vietano +FollowSymLinks in .htaccess
-# (causa errore 500). Usiamo SymLinksIfOwnerMatch che e' accettato ovunque.
-<IfModule mod_autoindex.c>
-  Options -Indexes
-</IfModule>
+# ── BRUT — .htaccess minimale (compatibile Tophost/Seeweb) ──
+# NESSUNA direttiva Options (l'hosting condiviso la vieta -> errore 500).
+# Solo rewrite (URL puliti) e cache, entrambi sotto IfModule.
 
-# Clean URLs: no .html extension
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
-  # 301 redirect /page.html -> /page
+  # /pagina.html -> /pagina (301)
   RewriteCond %{THE_REQUEST} \s/+([^.\s?]+)\.html[\s?] [NC]
   RewriteRule ^ /%1 [R=301,L]
 
-  # Serve /page from /page.html
+  # Serve /pagina dal file /pagina.html
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteCond %{REQUEST_FILENAME}\.html -f
   RewriteRule ^(.+?)/?$ $1.html [L]
 </IfModule>
 
-# Cache policy
-#  - HTML/CSS/JS: sempre rivalidati (no-cache) cosi' ogni aggiornamento del
-#    sito si vede SUBITO, senza dover fare hard-refresh.
-#  - Immagini/font: cache lunga (versionate nel nome file quando cambiano).
-<IfModule mod_expires.c>
-  ExpiresActive On
-  ExpiresByType image/png      "access plus 1 month"
-  ExpiresByType image/jpeg     "access plus 1 month"
-  ExpiresByType image/svg+xml  "access plus 1 month"
-  ExpiresByType image/x-icon   "access plus 1 month"
-  ExpiresByType font/ttf       "access plus 1 year"
-  ExpiresByType font/otf       "access plus 1 year"
-</IfModule>
+# HTML/CSS/JS sempre rivalidati (aggiornamenti visibili subito)
 <IfModule mod_headers.c>
   <FilesMatch "\.(html|css|js)$">
     Header set Cache-Control "no-cache, must-revalidate"
   </FilesMatch>
-  <FilesMatch "\.(png|jpe?g|svg|ico|gif|webp|woff2?|ttf|otf)$">
-    Header set Cache-Control "public, max-age=2592000"
-  </FilesMatch>
 </IfModule>
 
 ErrorDocument 404 /index.html
-
-# ── Block dev / meta files ──
-RedirectMatch 404 ^/\.git
-RedirectMatch 404 ^/(\.claude|tools|assets_src|node_modules)(/|$)
-# Nega file nascosti/meta con sintassi compatibile Apache 2.2 e 2.4
-<FilesMatch "(^\.ht|\.(yml|md|gitignore|json|lock)$)">
-  <IfModule mod_authz_core.c>
-    Require all denied
-  </IfModule>
-  <IfModule !mod_authz_core.c>
-    Order allow,deny
-    Deny from all
-  </IfModule>
-</FilesMatch>
