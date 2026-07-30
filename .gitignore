@@ -1,0 +1,19 @@
+# tooling / scratch (not part of the deliverable)
+node_modules/
+package.json
+package-lock.json
+shot.js
+work/
+assets_src/
+
+# build artifact (delivered to user, not versioned)
+brut-site.zip
+shot_fold.js
+probe*.js
+
+# artefatti di pubblicazione (build locale)
+_deploy/
+brut-produzione.zip
+*.zip
+brut-sito.zip
+brut-pdf.zip

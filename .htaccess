@@ -1,0 +1,25 @@
+# ── BRUT — .htaccess minimale (compatibile Tophost/Seeweb) ──
+# NESSUNA direttiva Options (l'hosting condiviso la vieta -> errore 500).
+# Solo rewrite (URL puliti) e cache, entrambi sotto IfModule.
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # /pagina.html -> /pagina (301)
+  RewriteCond %{THE_REQUEST} \s/+([^.\s?]+)\.html[\s?] [NC]
+  RewriteRule ^ /%1 [R=301,L]
+
+  # Serve /pagina dal file /pagina.html
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME}\.html -f
+  RewriteRule ^(.+?)/?$ $1.html [L]
+</IfModule>
+
+# HTML/CSS/JS sempre rivalidati (aggiornamenti visibili subito)
+<IfModule mod_headers.c>
+  <FilesMatch "\.(html|css|js)$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+</IfModule>
+
+ErrorDocument 404 /index.html
